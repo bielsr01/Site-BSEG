@@ -82,7 +82,7 @@ const Header = () => {
             <img
               src={bsegLogo}
               alt="B.SEG - Saúde e Segurança do Trabalho"
-              className="h-10 object-contain border-t-[0px] border-r-[0px] border-b-[0px] border-l-[0px] rounded-tl-[0px] rounded-tr-[0px] rounded-br-[0px] rounded-bl-[0px]"
+              className="h-10 md:h-20 object-contain"
               data-testid="logo"
             />
           </a>
