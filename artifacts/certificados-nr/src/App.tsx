@@ -209,7 +209,7 @@ const Hero = () => {
             </span>
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#FF6B00] shrink-0" />
-              ICP-Brasil válido
+              Válido em todo território nacional
             </span>
           </div>
         </motion.div>
