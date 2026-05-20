@@ -32,6 +32,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import bsegLogo from "@assets/02 Logotipo.png";
+import certImage from "@assets/download_(5)_1779314587937.png";
 
 const queryClient = new QueryClient();
 
@@ -221,76 +222,12 @@ const Hero = () => {
           {/* Glow behind card */}
           <div className="absolute inset-0 bg-[#FF6B00]/20 blur-[80px] rounded-3xl" />
 
-          <div className="relative bg-white/5 border border-white/15 p-8 rounded-3xl backdrop-blur-sm shadow-2xl">
-            {/* Card header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">
-              <div>
-                <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-1">
-                  Certificado Digital
-                </p>
-                <h3 className="text-2xl font-black text-white">B.SEG</h3>
-                <p className="text-sm text-gray-400">
-                  Saúde e Segurança do Trabalho
-                </p>
-              </div>
-              <div className="bg-[#FF6B00]/15 border border-[#FF6B00]/30 p-4 rounded-2xl">
-                <ShieldCheck className="w-10 h-10 text-[#FF6B00]" />
-              </div>
-            </div>
-
-            {/* Certificate fields */}
-            <div className="space-y-3">
-              {[
-                {
-                  icon: <UserCheck className="w-4 h-4" />,
-                  label: "Colaborador",
-                  value: "Carlos Eduardo Martins",
-                },
-                {
-                  icon: <Building2 className="w-4 h-4" />,
-                  label: "Empresa",
-                  value: "Construtora Sigma Ltda.",
-                },
-                {
-                  icon: <BadgeCheck className="w-4 h-4" />,
-                  label: "Certificação",
-                  value: "NR-35 — Trabalho em Altura",
-                },
-                {
-                  icon: <Clock className="w-4 h-4" />,
-                  label: "Validade",
-                  value: "2 anos — Emitido digitalmente",
-                },
-              ].map((row) => (
-                <div
-                  key={row.label}
-                  className="flex items-center gap-4 bg-white/5 px-4 py-3.5 rounded-xl"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] shrink-0">
-                    {row.icon}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">
-                      {row.label}
-                    </p>
-                    <p className="text-sm text-white font-semibold truncate">
-                      {row.value}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Status footer */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span className="flex items-center gap-2 text-sm text-gray-400">
-                <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse inline-block" />
-                Assinado com ICP-Brasil
-              </span>
-              <span className="text-sm font-black text-[#25D366]">
-                Emitido em 24h
-              </span>
-            </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src={certImage}
+              alt="Certificado de Conclusão B.SEG - Norma Regulamentadora"
+              className="w-full h-auto object-contain"
+            />
           </div>
         </motion.div>
       </div>
