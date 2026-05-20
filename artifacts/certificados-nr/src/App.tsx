@@ -407,15 +407,15 @@ const NrGrid = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.06 }}
               whileHover={{ y: -4 }}
-              className="group p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white"
+              className="group p-3 sm:p-5 lg:p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white flex flex-col items-center"
             >
-              <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-3 shadow-sm shrink-0">
                 {nr.icon}
               </div>
-              <div className="inline-block bg-[#0A1628]/5 group-hover:bg-[#FF6B00]/10 text-[#0A1628] group-hover:text-[#FF6B00] font-black uppercase tracking-wider px-2 py-1 rounded-md mb-2 transition-colors text-[17px]">
+              <div className="inline-block bg-[#0A1628]/5 group-hover:bg-[#FF6B00]/10 text-[#0A1628] group-hover:text-[#FF6B00] font-black uppercase tracking-wider px-2 py-0.5 rounded-md mb-1.5 transition-colors text-[11px] sm:text-[13px] lg:text-[15px]">
                 NR-{nr.num}
               </div>
-              <p className="text-gray-700 font-semibold group-hover:text-[#0A1628] transition-colors text-[20px]">
+              <p className="text-gray-700 font-semibold group-hover:text-[#0A1628] transition-colors text-[12px] sm:text-[14px] lg:text-[16px] leading-snug">
                 {nr.title}
               </p>
             </motion.div>
@@ -433,11 +433,11 @@ const NrGrid = () => {
             whileHover={{ y: -4 }}
             className="p-6 rounded-2xl border-2 border-dashed border-[#FF6B00]/40 hover:border-[#FF6B00] bg-[#FF6B00]/3 hover:bg-[#FF6B00]/8 flex flex-col items-center justify-center text-center transition-all duration-300 cursor-pointer"
           >
-            <MessageCircle className="w-8 h-8 text-[#FF6B00] mb-3" />
-            <div className="font-black text-[#0A1628] mb-1 text-[20px]">
+            <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF6B00] mb-2 sm:mb-3" />
+            <div className="font-black text-[#0A1628] mb-1 text-[14px] sm:text-[17px] lg:text-[20px]">
               Outra NR?
             </div>
-            <span className="text-[#FF6B00] font-bold underline text-[18px]">
+            <span className="text-[#FF6B00] font-bold underline text-[12px] sm:text-[15px] lg:text-[18px]">
               Consulte no WhatsApp
             </span>
           </motion.a>
