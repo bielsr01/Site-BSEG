@@ -591,6 +591,29 @@ const Urgency = () => {
             ))}
           </div>
 
+          {/* Price highlight */}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-[#0A1628] text-white px-10 py-6 rounded-2xl shadow-xl mb-8">
+            <div className="text-center sm:text-left">
+              <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold">
+                Investimento por certificado
+              </p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-5xl font-black text-[#FF6B00]">R$ 129</span>
+                <span className="text-gray-400 font-medium">/ certificado</span>
+              </div>
+            </div>
+            <div className="hidden sm:block w-px h-16 bg-white/10" />
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#20bd5a] transition-colors flex items-center gap-2 whitespace-nowrap"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Solicitar agora
+            </a>
+          </div>
+
           <a
             href={WHATSAPP_LINK}
             target="_blank"
