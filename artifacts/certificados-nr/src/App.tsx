@@ -399,18 +399,15 @@ const NrGrid = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           {nrs.map((nr, index) => (
-            <motion.a
+            <motion.div
               key={nr.num}
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
               data-testid={`nr-card-${nr.num}`}
               initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.06 }}
               whileHover={{ y: -4 }}
-              className="group cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white"
+              className="group p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white"
             >
               <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm">
                 {nr.icon}
@@ -421,7 +418,7 @@ const NrGrid = () => {
               <p className="text-gray-700 font-semibold group-hover:text-[#0A1628] transition-colors text-[20px]">
                 {nr.title}
               </p>
-            </motion.a>
+            </motion.div>
           ))}
 
           {/* CTA card */}
