@@ -265,9 +265,7 @@ const Trust = () => {
     <section id="confianca" className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] mb-3">
-            Documentação com força legal. Ponto.
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] mb-3">Documentação com força legal</h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             Não existe atalho para conformidade — e a nossa entrega não abre mão
             da validade jurídica.
