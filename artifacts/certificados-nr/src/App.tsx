@@ -247,8 +247,8 @@ const Trust = () => {
     },
     {
       icon: <CheckCircle2 className="w-8 h-8" />,
-      title: "Conforme CLT e NRs",
-      desc: "Adequado às exigências do Ministério do Trabalho e à Nota Técnica da Inspeção do Trabalho.",
+      title: "Conforme MTE e GOV",
+      desc: "Adequado às exigências do Ministério do Trabalho e Emprego (MTE) e às diretrizes do Governo Federal.",
       highlight: false,
     },
     {
