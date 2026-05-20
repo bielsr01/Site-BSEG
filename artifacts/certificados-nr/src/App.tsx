@@ -36,7 +36,7 @@ import bsegLogo from "@assets/01_Logotipo_1779310858149.png";
 const queryClient = new QueryClient();
 
 const WHATSAPP_LINK =
-  "https://wa.me/5511999999999?text=Quero+emitir+meu+certificado+NR+em+24h";
+  "https://wa.me/5545988160990?text=Quero+emitir+meu+certificado+NR+em+24h";
 
 /* ─── HEADER ─── */
 const Header = () => {
@@ -805,7 +805,7 @@ const Footer = () => {
               className="inline-flex items-center gap-3 text-2xl font-black text-white hover:text-[#25D366] transition-colors mb-2"
             >
               <MessageCircle className="w-7 h-7 text-[#25D366]" />
-              (11) 9999-9999
+              (45) 98816-0990
             </a>
             <p className="text-sm text-gray-500 mt-2">
               Atendimento via WhatsApp em horário comercial
