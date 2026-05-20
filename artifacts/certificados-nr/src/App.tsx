@@ -21,6 +21,7 @@ import {
   Mountain,
   Users,
   BoxSelect,
+  Package,
   MessageCircle,
   Menu,
   X,
@@ -349,11 +350,6 @@ const Trust = () => {
 const NrGrid = () => {
   const nrs = [
     {
-      num: "05",
-      title: "CIPA / Designado",
-      icon: <Users className="w-7 h-7" />,
-    },
-    {
       num: "06",
       title: "Uso Adequado de EPIs",
       icon: <HardHat className="w-7 h-7" />,
@@ -362,6 +358,11 @@ const NrGrid = () => {
       num: "10",
       title: "Segurança em Instalações Elétricas",
       icon: <Zap className="w-7 h-7" />,
+    },
+    {
+      num: "11",
+      title: "Transporte e Movimentação de Materiais",
+      icon: <Package className="w-7 h-7" />,
     },
     {
       num: "18",
