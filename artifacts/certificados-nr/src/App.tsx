@@ -677,9 +677,7 @@ const Urgency = () => {
             <MessageCircle className="w-7 h-7" />
             Chamar no WhatsApp Agora
           </a>
-          <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-5">
-            Atendimento imediato em horário comercial
-          </p>
+          <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-5">Atendimento imediato</p>
         </motion.div>
       </div>
     </section>
