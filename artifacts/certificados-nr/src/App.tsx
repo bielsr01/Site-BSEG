@@ -464,7 +464,7 @@ const HowItWorks = () => {
     },
     {
       step: "02",
-      title: "Treinamento Prático",
+      title: "Treinamento Facilitado",
       desc: "Disponibilizamos o conteúdo conforme as exigências legais da norma, adaptado à sua realidade operacional.",
       icon: <UserCheck className="w-6 h-6" />,
     },
