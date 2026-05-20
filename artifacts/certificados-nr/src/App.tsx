@@ -39,26 +39,8 @@ const WHATSAPP_LINK =
   "https://wa.me/5545988160990?text=Quero+emitir+meu+certificado+NR+em+24h";
 
 /* ─── HEADER ─── */
-const HEADER_HEIGHT = 68; // px — fixed height prevents layout shifts / trembling
-
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 50);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinks = [
     { href: "#confianca", label: "Conformidade" },
@@ -68,70 +50,61 @@ const Header = () => {
   ];
 
   return (
-    <>
-      <header
-        style={{ height: HEADER_HEIGHT, willChange: "background-color, backdrop-filter" }}
-        className={`fixed top-0 w-full z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300 ${
-          scrolled
-            ? "bg-[#0A1628]/85 backdrop-blur-lg shadow-lg"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="h-full container mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center shrink-0">
-            <img
-              src={bsegLogo}
-              alt="B.SEG - Saúde e Segurança do Trabalho"
-              className="h-10 md:h-20 object-contain mt-[16px] mb-[-62px] pt-[0px] pb-[0px] pl-[0px] pr-[0px] ml-[56px] mr-[23px]"
-              data-testid="logo"
-            />
-          </a>
+    <header className="w-full bg-[#0A1628] shadow-md">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#" className="flex items-center shrink-0">
+          <img
+            src={bsegLogo}
+            alt="B.SEG - Saúde e Segurança do Trabalho"
+            className="h-12 md:h-20 w-auto object-contain"
+            data-testid="logo"
+          />
+        </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-gray-300 hover:text-[#FF6B00] transition-colors tracking-wide"
-              >
-                {l.label}
-              </a>
-            ))}
+        {/* Desktop nav */}
+        <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
+          {navLinks.map((l) => (
             <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
-              data-testid="header-cta"
-              className="bg-[#FF6B00] text-white px-5 py-2.5 rounded-lg hover:bg-[#e05e00] transition-colors font-bold flex items-center gap-2 shadow-md"
+              key={l.href}
+              href={l.href}
+              className="text-gray-300 hover:text-[#FF6B00] transition-colors tracking-wide"
             >
-              Emitir Agora <ArrowRight className="w-4 h-4" />
+              {l.label}
             </a>
-          </nav>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-white p-2 shrink-0"
-            onClick={() => setMobileOpen((v) => !v)}
-            data-testid="mobile-menu-toggle"
-            aria-label="Menu"
+          ))}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            data-testid="header-cta"
+            className="bg-[#FF6B00] text-white px-5 py-2.5 rounded-lg hover:bg-[#e05e00] transition-colors font-bold flex items-center gap-2 shadow-md"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </header>
-      {/* Mobile drawer — anchored below fixed header */}
+            Emitir Agora <ArrowRight className="w-4 h-4" />
+          </a>
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-white p-2 shrink-0"
+          onClick={() => setMobileOpen((v) => !v)}
+          data-testid="mobile-menu-toggle"
+          aria-label="Menu"
+        >
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile drawer — expands in the normal document flow */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
-            style={{ top: HEADER_HEIGHT }}
-            className="fixed inset-x-0 z-40 bg-[#0A1628] border-t border-white/10 shadow-2xl md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-white/10 md:hidden"
           >
-            <div className="flex flex-col gap-1 p-6">
+            <div className="flex flex-col px-6 py-4">
               {navLinks.map((l) => (
                 <a
                   key={l.href}
@@ -155,7 +128,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 };
 
