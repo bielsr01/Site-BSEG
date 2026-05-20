@@ -382,7 +382,30 @@ const NrGrid = () => {
     {
       num: "35",
       title: "Trabalho em Altura",
-      icon: <AlertTriangle className="w-7 h-7" />,
+      icon: (
+        <svg viewBox="0 0 28 28" className="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          {/* Rope from top */}
+          <line x1="14" y1="0" x2="14" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          {/* Harness hook */}
+          <path d="M11.5 5 Q14 3.5 16.5 5 L16 6.5 Q14 5.5 12 6.5 Z" fill="currentColor"/>
+          {/* Head */}
+          <circle cx="14" cy="9" r="2.5"/>
+          {/* Torso / harness strap */}
+          <line x1="14" y1="11.5" x2="14" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          {/* Harness diagonal straps */}
+          <line x1="14" y1="12.5" x2="10.5" y2="15.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+          <line x1="14" y1="12.5" x2="17.5" y2="15.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+          {/* Arms stretched out (working) */}
+          <line x1="14" y1="13.5" x2="9" y2="16.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          <line x1="14" y1="13.5" x2="19" y2="16.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          {/* Legs dangling */}
+          <line x1="14" y1="18" x2="11" y2="24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          <line x1="14" y1="18" x2="17" y2="24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          {/* Boots */}
+          <line x1="11" y1="24" x2="9.5" y2="24" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          <line x1="17" y1="24" x2="18.5" y2="24" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        </svg>
+      ),
     },
   ];
 
