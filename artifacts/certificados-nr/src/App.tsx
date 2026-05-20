@@ -755,14 +755,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+        <div className="pt-8 border-t border-white/10 text-center text-sm">
           <p className="text-gray-500">
-            &copy; {new Date().getFullYear()} B.SEG — Saúde e Segurança do
-            Trabalho. Todos os direitos reservados.
-          </p>
-          <p className="text-gray-600 text-xs text-center md:text-right max-w-md ml-[0px] mr-[0px]">
-            O conteúdo deste site não substitui a necessidade de consultoria
-            técnica específica para a sua empresa.
+            &copy; {new Date().getFullYear()} B.SEG — Todos os direitos reservados.
           </p>
         </div>
       </div>
