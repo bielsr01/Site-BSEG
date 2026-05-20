@@ -569,9 +569,7 @@ const Urgency = () => {
           <p className="text-xl text-gray-600 font-medium max-w-2xl mx-auto mb-4">
             Um único auto de infração pode custar mais do que todos os
             certificados da sua equipe juntos.{" "}
-            <strong className="text-[#0A1628]">
-              Não paralise sua obra por falta de papel.
-            </strong>
+            <strong className="text-[#0A1628]">Não paralise sua obra por falta de documentos.</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-10 mt-8">
