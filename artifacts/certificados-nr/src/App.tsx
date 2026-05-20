@@ -532,7 +532,7 @@ const HowItWorks = () => {
             className="inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-4 rounded-xl font-black text-lg shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:bg-[#20bd5a] transition-colors"
           >
             <MessageCircle className="w-6 h-6" />
-            Começar agora pelo WhatsApp
+            Emitir certificado em 24hrs!
           </motion.a>
         </div>
       </div>
