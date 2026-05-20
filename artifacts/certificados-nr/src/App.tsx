@@ -418,13 +418,13 @@ const NrGrid = () => {
               whileHover={{ y: -4 }}
               className="group cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white"
             >
-              <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm">
+              <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm ml-[125.399px]">
                 {nr.icon}
               </div>
-              <div className="inline-block bg-[#0A1628]/5 group-hover:bg-[#FF6B00]/10 text-[#0A1628] group-hover:text-[#FF6B00] text-xs font-black uppercase tracking-wider px-2 py-1 rounded-md mb-2 transition-colors">
+              <div className="inline-block bg-[#0A1628]/5 group-hover:bg-[#FF6B00]/10 text-[#0A1628] group-hover:text-[#FF6B00] font-black uppercase tracking-wider px-2 py-1 rounded-md mb-2 transition-colors text-[17px]">
                 NR-{nr.num}
               </div>
-              <p className="text-sm text-gray-700 font-semibold leading-snug group-hover:text-[#0A1628] transition-colors">
+              <p className="text-gray-700 font-semibold group-hover:text-[#0A1628] transition-colors text-[20px]">
                 {nr.title}
               </p>
             </motion.a>
@@ -443,10 +443,10 @@ const NrGrid = () => {
             className="p-6 rounded-2xl border-2 border-dashed border-[#FF6B00]/40 hover:border-[#FF6B00] bg-[#FF6B00]/3 hover:bg-[#FF6B00]/8 flex flex-col items-center justify-center text-center transition-all duration-300 cursor-pointer"
           >
             <MessageCircle className="w-8 h-8 text-[#FF6B00] mb-3" />
-            <div className="font-black text-[#0A1628] mb-1 text-sm">
+            <div className="font-black text-[#0A1628] mb-1 text-[20px]">
               Outra NR?
             </div>
-            <span className="text-[#FF6B00] font-bold text-xs underline">
+            <span className="text-[#FF6B00] font-bold underline text-[18px]">
               Consulte no WhatsApp
             </span>
           </motion.a>
