@@ -397,10 +397,7 @@ const NrGrid = () => {
           <h2 className="text-3xl md:text-5xl font-black text-[#0A1628] tracking-tight mb-4">
             Treinamentos para as NRs mais exigidas
           </h2>
-          <p className="text-lg text-gray-500">
-            Emitimos para as normas mais cobradas em fiscalizações, integrações
-            e auditorias de RH.
-          </p>
+          <p className="text-gray-500 text-[20px]">Emitimos para todas as normas cobradas em fiscalizações, integrações e auditorias de RH.</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
