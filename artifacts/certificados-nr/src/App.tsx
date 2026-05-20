@@ -183,19 +183,21 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <motion.a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              data-testid="hero-whatsapp-cta"
-              className="relative inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-black text-lg shadow-[0_0_30px_rgba(37,211,102,0.35)] overflow-hidden"
-            >
-              <span className="absolute -inset-1 rounded-xl border-2 border-[#25D366]/60 animate-ping" />
-              <MessageCircle className="w-6 h-6 relative z-10" />
-              <span className="relative z-10">Emitir Certificado em 24h!</span>
-            </motion.a>
+            <div className="relative inline-flex">
+              <span className="absolute -inset-1 rounded-xl border-2 border-[#25D366]/60 animate-ping pointer-events-none" />
+              <motion.a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                data-testid="hero-whatsapp-cta"
+                className="inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-black text-lg shadow-[0_0_30px_rgba(37,211,102,0.35)]"
+              >
+                <MessageCircle className="w-6 h-6" />
+                Emitir Certificado em 24h!
+              </motion.a>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-gray-400 font-medium pt-2">
