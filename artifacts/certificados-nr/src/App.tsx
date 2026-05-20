@@ -31,7 +31,7 @@ import {
   Building2,
   UserCheck,
 } from "lucide-react";
-import bsegLogo from "@assets/01_Logotipo_1779310858149.png";
+import bsegLogo from "@assets/02 Logotipo.png";
 
 const queryClient = new QueryClient();
 
@@ -82,7 +82,7 @@ const Header = () => {
             <img
               src={bsegLogo}
               alt="B.SEG - Saúde e Segurança do Trabalho"
-              className="h-10 object-contain"
+              className="h-10 object-contain border-t-[0px] border-r-[0px] border-b-[0px] border-l-[0px] rounded-tl-[0px] rounded-tr-[0px] rounded-br-[0px] rounded-bl-[0px]"
               data-testid="logo"
             />
           </a>
@@ -120,7 +120,6 @@ const Header = () => {
           </button>
         </div>
       </header>
-
       {/* Mobile drawer — anchored below fixed header */}
       <AnimatePresence>
         {mobileOpen && (
