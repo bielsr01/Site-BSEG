@@ -807,9 +807,7 @@ const Footer = () => {
               <MessageCircle className="w-7 h-7 text-[#25D366]" />
               (45) 98816-0990
             </a>
-            <p className="text-sm text-gray-500 mt-2">
-              Atendimento via WhatsApp em horário comercial
-            </p>
+            <p className="text-sm text-gray-500 mt-2">Atendimento via WhatsApp!</p>
           </div>
         </div>
 
@@ -818,7 +816,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} B.SEG — Saúde e Segurança do
             Trabalho. Todos os direitos reservados.
           </p>
-          <p className="text-gray-600 text-xs text-center md:text-right max-w-md">
+          <p className="text-gray-600 text-xs text-center md:text-right max-w-md ml-[0px] mr-[0px]">
             O conteúdo deste site não substitui a necessidade de consultoria
             técnica específica para a sua empresa.
           </p>
