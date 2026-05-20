@@ -159,19 +159,19 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="space-y-6"
+          className="space-y-4 lg:space-y-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-sm font-semibold text-[#FF6B00]">
-            <AlertTriangle className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-xs sm:text-sm font-semibold text-[#FF6B00]">
+            <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Certificação de Urgência — Entrega em 24h</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight">
             Precisa de Certificados de NR com{" "}
             <span className="text-[#FF6B00]">Urgência?</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl">
             Emitimos e entregamos em todas as NRs em até{" "}
             <strong className="text-white">24 horas</strong>. Certificados 100%
             válidos perante o{" "}
@@ -786,7 +786,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="font-sans text-foreground bg-background overflow-x-hidden selection:bg-[#FF6B00] selection:text-white">
-          <div className="h-screen flex flex-col">
+          <div className="flex flex-col lg:h-screen">
             <Header />
             <Hero />
           </div>
