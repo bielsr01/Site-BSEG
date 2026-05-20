@@ -39,13 +39,24 @@ const WHATSAPP_LINK =
   "https://wa.me/5545988160990?text=Quero+emitir+meu+certificado+NR+em+24h";
 
 /* ─── HEADER ─── */
+const HEADER_HEIGHT = 68; // px — fixed height prevents layout shifts / trembling
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -59,18 +70,19 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        style={{ height: HEADER_HEIGHT, willChange: "background-color, backdrop-filter" }}
+        className={`fixed top-0 w-full z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300 ${
           scrolled
-            ? "bg-[#0A1628]/97 backdrop-blur-md shadow-lg py-3"
-            : "bg-transparent py-5"
+            ? "bg-[#0A1628]/85 backdrop-blur-lg shadow-lg"
+            : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center">
+        <div className="h-full container mx-auto px-6 flex items-center justify-between">
+          <a href="#" className="flex items-center shrink-0">
             <img
               src={bsegLogo}
               alt="B.SEG - Saúde e Segurança do Trabalho"
-              className="h-10 object-contain brightness-0 invert"
+              className="h-10 object-contain"
               data-testid="logo"
             />
           </a>
@@ -99,7 +111,7 @@ const Header = () => {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 shrink-0"
             onClick={() => setMobileOpen((v) => !v)}
             data-testid="mobile-menu-toggle"
             aria-label="Menu"
@@ -109,14 +121,16 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — anchored below fixed header */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-x-0 top-[60px] z-40 bg-[#0A1628] border-t border-white/10 shadow-2xl md:hidden"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            style={{ top: HEADER_HEIGHT }}
+            className="fixed inset-x-0 z-40 bg-[#0A1628] border-t border-white/10 shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-1 p-6">
               {navLinks.map((l) => (
@@ -784,7 +798,7 @@ const Footer = () => {
             <img
               src={bsegLogo}
               alt="B.SEG - Saúde e Segurança do Trabalho"
-              className="h-12 object-contain brightness-0 invert mb-5"
+              className="h-12 object-contain mb-5"
               data-testid="footer-logo"
             />
             <p className="text-gray-400 max-w-sm leading-relaxed">
