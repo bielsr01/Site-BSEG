@@ -638,10 +638,6 @@ const FAQSection = () => {
       a: "Sim! Para turmas ou pacotes com múltiplos colaboradores, oferecemos condições especiais. Fale diretamente com nosso comercial via WhatsApp.",
     },
     {
-      q: "Em quanto tempo recebo o certificado?",
-      a: "Em até 24 horas úteis após a realização do treinamento e envio dos dados completos.",
-    },
-    {
       q: "O treinamento é presencial ou online?",
       a: "O treinamento pode ser realizado de forma prática e rápida, sem necessidade de deslocamento, adaptado à sua realidade operacional.",
     },
