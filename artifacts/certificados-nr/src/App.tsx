@@ -415,7 +415,7 @@ const NrGrid = () => {
               whileHover={{ y: -4 }}
               className="group cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white"
             >
-              <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm ml-[125.399px]">
+              <div className="w-14 h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-4 shadow-sm">
                 {nr.icon}
               </div>
               <div className="inline-block bg-[#0A1628]/5 group-hover:bg-[#FF6B00]/10 text-[#0A1628] group-hover:text-[#FF6B00] font-black uppercase tracking-wider px-2 py-1 rounded-md mb-2 transition-colors text-[17px]">
