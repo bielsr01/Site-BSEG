@@ -549,7 +549,7 @@ const HowItWorks = () => {
 /* ─── URGENCY ─── */
 const Urgency = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-[#FF6B00] to-[#e05300]">
+    <section className="py-24 bg-gradient-to-br from-gray-100 to-orange-50">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
@@ -567,9 +567,9 @@ const Urgency = () => {
           </h2>
 
           <p className="text-xl text-gray-600 font-medium max-w-2xl mx-auto mb-4">
-            Um único auto de infração pode custar mais do que todos os
-            certificados da sua equipe juntos.{" "}
-            <strong className="text-[#0A1628]">Não paralise sua obra por falta de documentos.</strong>
+            Um único problema com a fiscalização pode custar mais do que a
+            certificação de toda a sua equipe.{" "}
+            <strong className="text-[#0A1628]">Não paralise suas atividades nem perca contratos por falta de documentação.</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-10 mt-8">
