@@ -136,7 +136,7 @@ const Header = () => {
 /* ─── HERO ─── */
 const Hero = () => {
   return (
-    <section className="relative min-h-[100dvh] flex items-center pt-24 pb-16 bg-[#0A1628] text-white overflow-hidden">
+    <section className="relative flex-1 flex items-center bg-[#0A1628] text-white overflow-hidden rounded-b-[3rem]">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF6B00]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
@@ -151,13 +151,13 @@ const Hero = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-14 items-center">
+      <div className="container mx-auto px-6 py-8 relative z-10 grid lg:grid-cols-2 gap-10 items-center h-full">
         {/* Left: copy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="space-y-8"
+          className="space-y-6"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-sm font-semibold text-[#FF6B00]">
             <AlertTriangle className="w-4 h-4" />
@@ -217,7 +217,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="relative hidden lg:block"
+          className="relative hidden lg:flex items-center justify-center h-full py-4"
         >
           {/* Glow behind card */}
           <div className="absolute inset-0 bg-[#FF6B00]/20 blur-[80px] rounded-3xl" />
@@ -226,7 +226,8 @@ const Hero = () => {
             <img
               src={certImage}
               alt="Certificado de Conclusão B.SEG - Norma Regulamentadora"
-              className="w-full h-auto object-contain"
+              style={{ maxHeight: "calc(100svh - 160px)" }}
+              className="w-auto object-contain"
             />
           </div>
         </motion.div>
@@ -770,8 +771,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="font-sans text-foreground bg-background overflow-x-hidden selection:bg-[#FF6B00] selection:text-white">
-          <Header />
-          <Hero />
+          <div className="h-screen flex flex-col">
+            <Header />
+            <Hero />
+          </div>
           <Trust />
           <NrGrid />
           <HowItWorks />
