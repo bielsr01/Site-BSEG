@@ -264,7 +264,7 @@ const Trust = () => {
   ];
 
   return (
-    <section id="confianca" className="py-24 bg-gray-50">
+    <section id="confianca" className="py-24 bg-gray-50 rounded-t-[3rem]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] mb-3">Documentação com força legal</h2>
@@ -471,7 +471,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white rounded-t-[3rem] rounded-b-[3rem] overflow-hidden">
+    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white rounded-t-[3rem] overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <p className="text-[#FF6B00] font-black uppercase tracking-widest text-sm mb-3">
@@ -543,7 +543,7 @@ const HowItWorks = () => {
 /* ─── URGENCY ─── */
 const Urgency = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-100 to-orange-50">
+    <section className="py-24 bg-gradient-to-br from-gray-100 to-orange-50 rounded-t-[3rem]">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
@@ -776,7 +776,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="font-sans text-foreground bg-background overflow-x-hidden selection:bg-[#FF6B00] selection:text-white">
-          <div className="flex flex-col lg:h-screen bg-[#0A1628] rounded-b-[3rem] overflow-hidden">
+          <div className="flex flex-col lg:h-screen bg-[#0A1628] overflow-hidden">
             <Header />
             <Hero />
           </div>
