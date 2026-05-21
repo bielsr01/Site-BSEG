@@ -1,285 +1,541 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, HeartPulse, GraduationCap, FileSearch, ClipboardList, UserCheck, Stethoscope, Briefcase, Phone, Mail, MapPin, Menu, X } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { 
+  Menu, 
+  X, 
+  Database, 
+  FileText, 
+  GraduationCap, 
+  Scale, 
+  CheckCircle2, 
+  AlertTriangle, 
+  Phone, 
+  Mail, 
+  MapPin 
+} from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+import heroBgPath from "@assets/hero-bseg-factory.png";
+import heroOfficePath from "@assets/hero-bseg-office.png";
+import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
 
-const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20BSEG%20SST.";
+const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20solicitar%20um%20diagn%C3%B3stico%20de%20SST%20para%20minha%20empresa.";
+
+const contactSchema = z.object({
+  nome: z.string().min(2, "Nome é obrigatório"),
+  empresa: z.string().min(2, "Empresa é obrigatória"),
+  telefone: z.string().min(10, "Telefone inválido"),
+  necessidade: z.string().min(1, "Selecione uma opção"),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function Home() {
   const { toast } = useToast();
-  
-  const contactSchema = z.object({
-    nome: z.string().min(2, "Nome é obrigatório"),
-    email: z.string().email("E-mail inválido"),
-    telefone: z.string().min(10, "Telefone inválido"),
-    mensagem: z.string().min(10, "Mensagem muito curta"),
-  });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       nome: "",
-      email: "",
+      empresa: "",
       telefone: "",
-      mensagem: "",
+      necessidade: "",
     },
   });
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
+  function onSubmit(values: ContactFormValues) {
     toast({
-      title: "Mensagem enviada!",
-      description: "Em breve entraremos em contato.",
+      title: "Mensagem enviada com sucesso!",
+      description: "Um Engenheiro de Segurança entrará em contato em até 24 horas.",
     });
     form.reset();
   }
 
+  const navLinks = [
+    { name: "INÍCIO", href: "#hero" },
+    { name: "SERVIÇOS", href: "#servicos" },
+    { name: "DIFERENCIAIS", href: "#diferenciais" },
+    { name: "FAQ", href: "#faq" },
+    { name: "CONTATO", href: "#contato" },
+  ];
+
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur supports-[backdrop-filter]:bg-secondary/80 border-b border-white/10">
+    <div className="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white">
+      {/* 1. Header fixo */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <a href="#" className="flex items-center">
-            <img src={logoPath} alt="B.SEG SST Logo" className="h-12 w-auto" />
+          <a href="#hero" className="flex items-center z-50">
+            <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-10 md:h-12 w-auto" />
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/90">
-            <a href="#sobre" className="hover:text-primary transition-colors">QUEM SOMOS</a>
-            <a href="#solucoes" className="hover:text-primary transition-colors">SOLUÇÕES</a>
-            <a href="#diferenciais" className="hover:text-primary transition-colors">DIFERENCIAIS</a>
-            <a href="#form" className="hover:text-primary transition-colors">CONTATO</a>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wider text-white/90">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="hover:text-primary transition-colors py-2"
+                data-testid={`nav-link-${link.name.toLowerCase()}`}
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="link-wa-header">
-              <Button className="bg-[#25D366] hover:bg-[#20bd5a] text-white hidden md:flex gap-2 font-bold">
-                <SiWhatsapp className="w-5 h-5" />
-                Fale com um Especialista
+
+          <div className="hidden lg:flex items-center gap-4">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-header-wa">
+              <Button className="bg-[#FF6B00] hover:bg-[#E66000] text-white font-bold h-11 px-6 text-sm uppercase tracking-wide shadow-lg shadow-[#FF6B00]/20">
+                Falar com Engenheiro
               </Button>
             </a>
-            <Button variant="ghost" size="icon" className="md:hidden text-white hover:bg-white/10" onClick={toggleMobileMenu}>
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </Button>
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="lg:hidden text-white hover:bg-white/10 z-50" 
+            onClick={toggleMobileMenu}
+            data-testid="btn-mobile-menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </Button>
+
+          {/* Mobile Nav */}
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute top-20 left-0 right-0 bg-[#0A1628] border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl lg:hidden"
+            >
+              <nav className="flex flex-col gap-4 text-base font-semibold tracking-wider text-white/90 text-center">
+                {navLinks.map((link) => (
+                  <a 
+                    key={link.name} 
+                    href={link.href} 
+                    className="hover:text-primary transition-colors py-2" 
+                    onClick={toggleMobileMenu}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full">
+                <Button className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white font-bold h-12 text-sm uppercase tracking-wide">
+                  Falar com Engenheiro
+                </Button>
+              </a>
+            </motion.div>
+          )}
         </div>
-        
-        {/* Mobile Nav */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-secondary border-t border-white/10 p-4">
-            <nav className="flex flex-col gap-4 text-sm font-medium text-white/90">
-              <a href="#sobre" className="hover:text-primary transition-colors py-2" onClick={toggleMobileMenu}>QUEM SOMOS</a>
-              <a href="#solucoes" className="hover:text-primary transition-colors py-2" onClick={toggleMobileMenu}>SOLUÇÕES</a>
-              <a href="#diferenciais" className="hover:text-primary transition-colors py-2" onClick={toggleMobileMenu}>DIFERENCIAIS</a>
-              <a href="#form" className="hover:text-primary transition-colors py-2" onClick={toggleMobileMenu}>CONTATO</a>
-            </nav>
-          </div>
-        )}
       </header>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/40 via-secondary to-secondary"></div>
+      {/* 2. HERO */}
+      <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroBgPath} 
+            alt="Fundo Industrial" 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[#0A1628]/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent opacity-80"></div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white">
-              Soluções completas para sua empresa, <span className="text-primary">garantindo conformidade.</span>
+            <div className="inline-flex items-center gap-2 bg-[#228848] text-white px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-8">
+              Engenheiros de Segurança do Trabalho em Foz do Iguaçu
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+              Sua empresa está um passo de uma multa milionária do eSocial?<br/>
+              <span className="text-[#FF6B00]">A BSeg resolve isso para você.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">
-              Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
+            
+            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed font-medium">
+              Laudos, programas e gestão de SST conduzidos por Engenheiros especializados. Conformidade garantida, zero burocracia para o seu RH.
             </p>
-            <a href={WA_LINK} target="_blank" rel="noreferrer">
-              <Button size="lg" className="bg-[#25D366] hover:bg-[#20bd5a] text-white text-lg h-14 px-8 font-bold gap-2">
-                <SiWhatsapp className="w-6 h-6" />
-                ENTRE EM CONTATO NO WHATSAPP
-              </Button>
-            </a>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto" data-testid="btn-hero-primary">
+                <Button size="lg" className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-8 text-base font-bold shadow-xl shadow-[#FF6B00]/20">
+                  Solicitar Diagnóstico Gratuito
+                </Button>
+              </a>
+              <a href="#servicos" className="w-full sm:w-auto" data-testid="btn-hero-secondary">
+                <Button size="lg" variant="outline" className="w-full bg-transparent border-white/30 text-white hover:bg-white hover:text-[#0A1628] h-14 px-8 text-base font-bold">
+                  Ver nossos serviços
+                </Button>
+              </a>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 border-t border-white/20 pt-8">
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">+150</span>
+                <span className="text-sm text-white/70 font-medium">empresas atendidas</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">+5.000</span>
+                <span className="text-sm text-white/70 font-medium">vidas protegidas</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">100%</span>
+                <span className="text-sm text-white/70 font-medium">em conformidade com o eSocial</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Quem Somos */}
-      <section id="sobre" className="py-20 md:py-32 bg-background">
+      {/* 3. Barra de autoridade */}
+      <section className="py-8 bg-white border-b border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">Quem somos</h2>
-              <div className="w-20 h-1 bg-primary mb-8 rounded-full"></div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                A BSeg Segurança do Trabalho é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="rounded-3xl overflow-hidden shadow-2xl border border-border bg-secondary relative min-h-[320px] flex items-center justify-center"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,_#228848_0%,_#0A1628_70%)] opacity-90" />
-              <div className="relative z-10 p-10 text-white text-center">
-                <Shield className="w-20 h-20 mx-auto mb-6 text-primary opacity-80" />
-                <p className="text-2xl font-bold mb-2">+10 anos de experiência</p>
-                <p className="text-white/70 text-lg">Protegendo colaboradores e empresas em todo o Brasil</p>
-              </div>
-            </motion.div>
+          <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-6">
+            Empresas que confiam na BSeg
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale">
+            {["Construtora Iguassu", "Ind. Paraná", "Logística Sul", "Varejo ABC", "Agro West", "Saúde Vida"].map((brand) => (
+              <span key={brand} className="text-xl md:text-2xl font-black font-serif tracking-tighter">
+                {brand}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Soluções */}
-      <section id="solucoes" className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Soluções Personalizadas para Sua Empresa</h2>
-            <p className="text-lg text-muted-foreground">
-              Atuamos em diversas frentes para garantir um ambiente de trabalho seguro e eficiente:
-            </p>
+      {/* 4. Problema vs Solução */}
+      <section className="py-20 md:py-32 relative bg-[#0A1628] text-white">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroAerialPath} 
+            alt="Visão Aérea Industrial" 
+            className="w-full h-full object-cover object-center opacity-30 mix-blend-overlay"
+          />
+          <div className="absolute inset-0 bg-[#0A1628]/80"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">O custo do risco vs O valor da segurança</h2>
+            <div className="w-24 h-1 bg-[#FF6B00] mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              { title: "PGR", desc: "Programa de Gerenciamento de Riscos", icon: Shield },
-              { title: "PCMSO", desc: "Controle Médico de Saúde Ocupacional", icon: HeartPulse },
-              { title: "Treinamentos NR", desc: "Capacitações e treinamentos normativos", icon: GraduationCap },
-              { title: "LTCAT", desc: "Laudo Técnico das Condições Ambientais", icon: FileSearch },
-              { title: "Laudos e Perícias", desc: "Laudos técnicos especializados", icon: ClipboardList },
-              { title: "PPP", desc: "Perfil Profissiográfico Previdenciário", icon: UserCheck },
-              { title: "ASO", desc: "Atestado de Saúde Ocupacional", icon: Stethoscope },
-              { title: "Consultoria SST", desc: "Consultoria em Saúde e Segurança do Trabalho", icon: Briefcase },
-            ].map((sol, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-2xl bg-background border hover:border-primary hover:shadow-lg transition-all duration-300 group hover:-translate-y-1"
-              >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <sol.icon className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-secondary mb-2">{sol.title}</h3>
-                <p className="text-muted-foreground">{sol.desc}</p>
-              </motion.div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+            {/* Problema */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-red-950/30 border border-red-900/50 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
+            >
+              <h3 className="text-2xl font-bold text-red-400 mb-6 flex items-center gap-3">
+                <AlertTriangle className="w-8 h-8" />
+                O Risco que sua empresa corre hoje
+              </h3>
+              <ul className="space-y-6">
+                {[
+                  "Multas de até R$6.000 por evento SST não enviado ao eSocial.",
+                  "Autuações do Ministério do Trabalho por laudos desatualizados.",
+                  "Passivos trabalhistas por ausência de PGR, PCMSO e LTCAT.",
+                  "Processos judiciais por falta de treinamentos nas NRs."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <X className="w-4 h-4 text-red-400" />
+                    </div>
+                    <span className="text-white/80 font-medium leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Solução */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#228848]/20 border border-[#228848]/40 rounded-3xl p-8 md:p-10 backdrop-blur-sm relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#228848]/10 blur-3xl rounded-full"></div>
+              <h3 className="text-2xl font-bold text-[#25D366] mb-6 flex items-center gap-3 relative z-10">
+                <CheckCircle2 className="w-8 h-8" />
+                Com a BSeg, sua empresa está blindada
+              </h3>
+              <ul className="space-y-6 relative z-10">
+                {[
+                  "Gestão completa dos eventos SST no eSocial.",
+                  "Laudos e programas elaborados por Engenheiros habilitados.",
+                  "Atualização contínua conforme legislação vigente.",
+                  "Treinamentos certificados que protegem empresa e colaboradores."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-[#25D366]/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#25D366]" />
+                    </div>
+                    <span className="text-white/90 font-medium leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
-          
+
           <div className="text-center">
-            <a href={WA_LINK} target="_blank" rel="noreferrer">
-              <Button size="lg" variant="outline" className="border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-lg h-14 px-8 font-bold gap-2">
-                <SiWhatsapp className="w-6 h-6" />
-                Entre em contato no whatsapp
+            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-blindar-empresa">
+              <Button size="lg" className="bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-10 text-lg font-bold shadow-2xl shadow-[#FF6B00]/20">
+                Quero blindar minha empresa agora
               </Button>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Diferenciais */}
-      <section id="diferenciais" className="py-20 md:py-32 bg-secondary text-white relative">
-        <div className="absolute inset-0 bg-primary/10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Atendemos empresas como a sua</h2>
-              <div className="w-20 h-1 bg-primary mb-8 rounded-full"></div>
-              <p className="text-lg text-white/80 mb-8">Nosso trabalho é voltado para:</p>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
-                {["Construção Civil", "Indústria e Manufatura", "Logística e Transporte", "Comércio e Varejo", "Saúde e Bem-estar", "Agronegócio"].map((ind, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="font-medium">{ind}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="bg-primary text-primary-foreground p-10 rounded-3xl shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-              <h3 className="text-3xl font-bold mb-4 relative z-10">Equipe especializada</h3>
-              <p className="text-primary-foreground/90 text-lg mb-8 relative z-10">
-                Profissionais com ampla experiência em segurança do trabalho, prontos para atender sua empresa com agilidade e qualidade.
-              </p>
-              <a href={WA_LINK} target="_blank" rel="noreferrer" className="relative z-10 inline-block">
-                <Button variant="secondary" size="lg" className="w-full text-primary font-bold gap-2">
-                  Fale com nossos especialistas
-                </Button>
-              </a>
-            </motion.div>
+      {/* 5. Nossos Serviços */}
+      <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF]">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-6">Soluções Técnicas Especializadas</h2>
+            <p className="text-lg md:text-xl text-gray-600">
+              Da gestão do eSocial ao laudo técnico, cuidamos de tudo para que você cuide do seu negócio.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {[
+              {
+                title: "Gestão de SST para o eSocial",
+                desc: "Emissão e envio dos eventos S-2210 (acidentes), S-2220 (monitoramento da saúde), S-2240 (condições de trabalho). Sua empresa sempre em dia com o governo.",
+                icon: Database
+              },
+              {
+                title: "Programas e Laudos Técnicos",
+                desc: "Elaboração de PGR, PCMSO, LTCAT, Laudos de Insalubridade e Periculosidade por Engenheiros de Segurança registrados no CREA.",
+                icon: FileText
+              },
+              {
+                title: "Treinamentos de NRs",
+                desc: "Capacitações presenciais e in-company para NR-5, NR-6, NR-10, NR-12, NR-33, NR-35 e demais normas. Certificados válidos e reconhecidos.",
+                icon: GraduationCap
+              },
+              {
+                title: "Assistência em Perícias Trabalhistas",
+                desc: "Assistência técnica especializada em perícias judiciais e extrajudiciais, com pareceres técnicos robustos para defender sua empresa.",
+                icon: Scale
+              }
+            ].map((srv, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+              >
+                <div className="w-16 h-16 bg-[#228848]/10 rounded-2xl flex items-center justify-center text-[#228848] mb-6">
+                  <srv.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0A1628] mb-4">{srv.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-medium">{srv.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-orcamento-servicos">
+              <Button size="lg" className="bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#FF6B00]/20">
+                Solicitar orçamento para minha empresa
+              </Button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Contato */}
-      <section id="form" className="py-20 md:py-32 bg-background">
+      {/* 6. Por que escolher a BSeg? (Diferenciais) */}
+      <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Entre em contato</h2>
-              <p className="text-lg text-muted-foreground mb-12">
-                Preencha o formulário e nossa equipe entrará em contato em breve.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-[#228848]/10 rounded-[3rem] transform -rotate-3 z-0"></div>
+              <img 
+                src={heroOfficePath} 
+                alt="Engenheiros no escritório" 
+                className="relative z-10 rounded-[2rem] shadow-2xl object-cover aspect-[4/3] w-full"
+              />
+              <div className="absolute -bottom-8 -right-8 z-20 bg-[#0A1628] text-white p-6 rounded-2xl shadow-xl max-w-[280px]">
+                <p className="font-bold text-lg mb-1 text-[#25D366]">Atendimento Local</p>
+                <p className="text-sm text-white/80">Atendemos Foz do Iguaçu e toda a região Oeste do Paraná.</p>
+              </div>
+            </motion.div>
+
+            <div className="lg:pl-8">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-10">Por que +150 empresas escolheram a BSeg?</h2>
               
+              <div className="space-y-8 mb-12">
+                {[
+                  {
+                    title: "Engenharia no comando",
+                    desc: "Laudos assinados por Engenheiros de Segurança habilitados no CREA — não apenas técnicos."
+                  },
+                  {
+                    title: "Entrega ágil",
+                    desc: "Relatórios e programas entregues em prazos que não travam sua operação."
+                  },
+                  {
+                    title: "Sem burocracia para você",
+                    desc: "Cuidamos de toda a parte técnica e documental. Seu RH foca no que importa."
+                  },
+                  {
+                    title: "Atendimento personalizado",
+                    desc: "Cada empresa recebe um diagnóstico exclusivo, não soluções genéricas."
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-4"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#228848]/10 flex items-center justify-center shrink-0 mt-1 text-[#228848]">
+                      <CheckCircle2 className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-[#0A1628] mb-2">{item.title}</h4>
+                      <p className="text-gray-600 font-medium leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-diagnostico-diferenciais">
+                <Button size="lg" className="bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#FF6B00]/20 w-full sm:w-auto">
+                  Agendar diagnóstico gratuito
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ */}
+      <section id="faq" className="py-20 md:py-32 bg-[#F4F7FF]">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Dúvidas frequentes</h2>
+            <div className="w-24 h-1 bg-[#228848] mx-auto rounded-full"></div>
+          </div>
+
+          <Accordion type="single" collapsible className="bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100">
+            {[
+              {
+                q: "Minha empresa é pequena. Preciso mesmo de SST?",
+                a: "Sim. A legislação brasileira (CLT, NR-1) exige PGR e PCMSO para toda empresa com funcionários registrados, independente do porte. As multas não diferenciam o tamanho da empresa."
+              },
+              {
+                q: "Como funciona o envio de eventos ao eSocial?",
+                a: "A BSeg cuida de todo o processo: levantamento das condições de trabalho, elaboração dos laudos técnicos e transmissão eletrônica dos eventos S-2210, S-2220 e S-2240 diretamente ao eSocial."
+              },
+              {
+                q: "A BSeg atende quais segmentos de empresa?",
+                a: "Atendemos todos os segmentos: construção civil, indústria, comércio, logística, saúde, agronegócio e prestadores de serviços. Se sua empresa tem funcionários CLT, podemos ajudar."
+              },
+              {
+                q: "Quanto custa a assessoria de SST?",
+                a: "O valor varia conforme o número de funcionários, grau de risco e serviços necessários. Solicite um diagnóstico gratuito — o investimento costuma ser muito menor do que o custo de uma única autuação."
+              },
+              {
+                q: "Quanto tempo leva para ter minha empresa regularizada?",
+                a: "Em média 15 a 30 dias úteis para a elaboração completa dos programas e laudos. Para urgências, temos atendimento prioritário."
+              },
+              {
+                q: "A BSeg fica em Foz do Iguaçu. Atende outras cidades?",
+                a: "Sim! Além de Foz do Iguaçu, atendemos toda a região Oeste do Paraná, incluindo Cascavel, Toledo, Medianeira e cidades vizinhas. Para clientes fora da região, oferecemos atendimento remoto."
+              }
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-100 last:border-0 py-2">
+                <AccordionTrigger className="text-left text-lg font-bold text-[#0A1628] hover:text-[#228848]">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 text-base leading-relaxed pt-2 pb-6">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* 8. Formulário de conversão + Footer */}
+      <section id="contato" className="bg-[#0A1628] text-white pt-20 pb-10">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 mb-24">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Solicite seu Diagnóstico Gratuito</h2>
+              <p className="text-lg text-white/80 mb-12">
+                Preencha o formulário e um Engenheiro de Segurança entrará em contato em até 24 horas.
+              </p>
+
               <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                    <Phone className="w-6 h-6" />
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-[#25D366] shrink-0 border border-white/10">
+                    <SiWhatsapp className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary mb-1">Telefone / WhatsApp</h4>
-                    <p className="text-muted-foreground">(45) 98816-0990</p>
+                    <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-1">WhatsApp</p>
+                    <p className="text-xl font-bold">(45) 98816-0990</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-[#228848] shrink-0 border border-white/10">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary mb-1">E-mail</h4>
-                    <p className="text-muted-foreground">contato@bsegsst.com</p>
+                    <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-1">E-mail</p>
+                    <p className="text-xl font-bold">contato@bsegsst.com</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-[#228848] shrink-0 border border-white/10">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary mb-1">Endereço</h4>
-                    <p className="text-muted-foreground">Rua Jorge Sanwais, 1001<br />Foz do Iguaçu, PR</p>
+                    <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-1">Endereço</p>
+                    <p className="text-lg font-bold">Rua Jorge Sanwais, 1001<br/>Foz do Iguaçu - PR</p>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-border/50">
+
+            <div className="bg-white text-[#0A1628] p-8 md:p-10 rounded-3xl shadow-2xl">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -287,112 +543,101 @@ export default function Home() {
                     name="nome"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nome</FormLabel>
+                        <FormLabel className="text-[#0A1628] font-bold">Nome completo</FormLabel>
                         <FormControl>
-                          <Input placeholder="Seu nome completo" {...field} className="bg-background h-12" />
+                          <Input placeholder="Seu nome" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-nome" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
-                    name="email"
+                    name="empresa"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>E-mail</FormLabel>
+                        <FormLabel className="text-[#0A1628] font-bold">Empresa</FormLabel>
                         <FormControl>
-                          <Input placeholder="seu@email.com" {...field} className="bg-background h-12" />
+                          <Input placeholder="Nome da sua empresa" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-empresa" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="telefone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Telefone</FormLabel>
+                        <FormLabel className="text-[#0A1628] font-bold">Telefone / WhatsApp</FormLabel>
                         <FormControl>
-                          <Input placeholder="(00) 00000-0000" {...field} className="bg-background h-12" />
+                          <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-telefone" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
-                    name="mensagem"
+                    name="necessidade"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Mensagem</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Como podemos ajudar?" className="min-h-[120px] bg-background resize-none" {...field} />
-                        </FormControl>
+                        <FormLabel className="text-[#0A1628] font-bold">Necessidade principal</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="h-12 bg-gray-50 border-gray-200" data-testid="select-necessidade">
+                              <SelectValue placeholder="Selecione uma opção" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="esocial">Regularização eSocial</SelectItem>
+                            <SelectItem value="pgr-pcmso">PGR / PCMSO</SelectItem>
+                            <SelectItem value="treinamentos">Treinamentos NRs</SelectItem>
+                            <SelectItem value="laudos">Laudos Técnicos</SelectItem>
+                            <SelectItem value="nao-sei">Ainda não sei, quero um diagnóstico</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
-                  <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold">
-                    Enviar Mensagem
+
+                  <Button type="submit" size="lg" className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 text-lg font-bold shadow-xl mt-4" data-testid="btn-submit-contato">
+                    Enviar e aguardar contato
                   </Button>
                 </form>
               </Form>
             </div>
           </div>
+
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+            <div className="flex gap-6 text-sm text-white/60 font-medium">
+              {navLinks.map(link => (
+                <a key={link.name} href={link.href} className="hover:text-white transition-colors">
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            <p className="text-white/40 text-sm text-center md:text-right">
+              © 2025 BSeg Segurança do Trabalho.<br/>Todos os direitos reservados.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-secondary text-white/80 py-12 border-t border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <div className="lg:col-span-2">
-              <img src={logoPath} alt="B.SEG SST Logo" className="h-12 w-auto mb-6" />
-              <p className="max-w-sm">
-                Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Navegação</h4>
-              <nav className="flex flex-col gap-3">
-                <a href="#sobre" className="hover:text-primary transition-colors">Quem Somos</a>
-                <a href="#solucoes" className="hover:text-primary transition-colors">Soluções</a>
-                <a href="#diferenciais" className="hover:text-primary transition-colors">Diferenciais</a>
-                <a href="#form" className="hover:text-primary transition-colors">Contato</a>
-              </nav>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Contato</h4>
-              <ul className="flex flex-col gap-3">
-                <li>(45) 98816-0990</li>
-                <li>contato@bsegsst.com</li>
-                <li>Rua Jorge Sanwais, 1001<br />Foz do Iguaçu, PR</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2025 B.SEG SST. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Floating WhatsApp */}
+      {/* 9. Botão flutuante WhatsApp */}
       <a 
         href={WA_LINK} 
         target="_blank" 
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform hover:shadow-[#25D366]/40 group"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group"
+        data-testid="btn-floating-wa"
       >
-        <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 group-hover:opacity-40"></div>
+        <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30 group-hover:opacity-50"></div>
         <SiWhatsapp className="w-8 h-8 relative z-10" />
       </a>
     </div>

@@ -1,0 +1,35 @@
+Atue como um Copywriter Especialista em Conversão (CRO) e Desenvolvedor Front-End de UI/UX de alta performance. Crie a estrutura de texto, layout e blocos de código para uma Landing Page de alta conversão para a empresa "BSeg Segurança do Trabalho" (bsegsst.com). O objetivo principal da página é fazer com que Gestores de RH, Donos de Empresas e Profissionais de SST solicitem um orçamento ou entrem em contato via WhatsApp.
+
+A estrutura da página deve seguir rigorosamente as seções abaixo:
+
+1. HERO SECTION (Dobra Principal):
+- Título de Alto Impacto: Focado na dor do cliente (evitar multas, processos trabalhistas e burocracia com o eSocial) e no benefício de ter uma assessoria especializada conduzida por Engenheiros Civis e de Segurança.
+- Subtítulo: Reforçando a facilidade, conformidade legal técnica e agilidade no atendimento em Foz do Iguaçu e região.
+- CTA Principal: Botão de destaque com efeito visual ("Falar com um Engenheiro Especialista" ou "Solicitar Diagnóstico de SST").
+
+2. BARRA DE AUTORIDADE / PROVA SOCIAL:
+- Espaço para logotipos de empresas parceiras/atendidas.
+- Métricas rápidas em destaque (Ex: +X empresas em conformidade, +X vidas protegidas, 100% de adequação ao eSocial).
+
+3. SEÇÃO DE PROBLEMA vs. SOLUÇÃO (Agitação da Dor):
+- Destacar os riscos que as empresas correm hoje (fiscalizações, multas pesadas por falta de envio dos eventos de SST ao eSocial, passivos trabalhistas por falta de laudos).
+- Apresentar a BSeg como a blindagem jurídica e técnica definitiva para o negócio.
+
+4. NOSSOS SERVIÇOS (Cards Visuais e Interativos):
+- Separe em blocos limpos com ícones modernos:
+  * Gestão de SST para o eSocial (Envio de eventos S-2210, S-2220, S-2240).
+  * Elaboração de Programas e Laudos Técnicos (PGR, PCMSO, LTCAT, Laudos de Insalubridade/Periculosidade).
+  * Treinamentos e Capacitações de Normas Regulamentadoras (Presenciais e In-company).
+  * Assistência Técnica em Perícias Trabalhistas.
+
+5. POR QUE ESCOLHER A BSEG? (Diferenciais Competitivos):
+- Foco em Atendimento Técnico Especializado (conduzido por engenharia), Agilidade na entrega dos relatórios, Processos desmistificados e sem burocracia para o cliente.
+
+6. FAQ (Perguntas Frequentes):
+- Sanar objeções comuns: "Minha empresa é pequena, preciso de SST?", "Como funciona o envio para o eSocial?", "A BSeg atende empresas de quais segmentos?".
+
+7. FOOTER & FORMULÁRIO SIMPLIFICADO:
+- Formulário de conversão rápida (Nome, Empresa, Telefone, Necessidade Principal).
+- Dados de contato claros (Rua Jorge Sanwais, 1001, Foz do Iguaçu - PR).
+
+Diretrizes de Design: Cores corporativas fortes (Azul escuro de segurança/confiança e detalhes em Laranja/Verde para destaque de botões), tipografia limpa (Inter ou Sans-serif), design totalmente responsivo, leve e focado em mobile-first, com carregamento rápido e botão flutuante do WhatsApp sempre visível.

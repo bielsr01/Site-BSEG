@@ -1,5 +1,22 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "E01HXoWaB3iaztebd7uTS"
+uri = "file://attached_assets/hero-bseg-factory.png"
+type = "image"
+title = "hero bseg factory safety"
+
+[[generated]]
+id = "yX8KNaLFlXdxZJBaqqkAo"
+uri = "file://attached_assets/hero-bseg-office.png"
+type = "image"
+title = "hero bseg office engineers"
+
+[[generated]]
+id = "wd_RILYkOIUYbRF5m-cqf"
+uri = "file://attached_assets/hero-bseg-aerial.png"
+type = "image"
+title = "hero bseg aerial industrial"
 
 [[outputs]]
 id = "hUeh_Mvfsd150TNOYyzCn"
