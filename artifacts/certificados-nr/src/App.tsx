@@ -583,7 +583,7 @@ const Urgency = () => {
           </div>
 
           {/* Price highlight */}
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-[#0A1628] text-white px-10 py-6 rounded-2xl shadow-xl mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-[#0A1628] text-white px-6 sm:px-10 py-6 rounded-2xl shadow-xl mb-8 mx-auto w-fit max-w-full">
             <div className="text-center sm:text-left">
               <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold">
                 Investimento por certificado
