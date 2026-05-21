@@ -79,9 +79,9 @@ function TestimonialsCarousel() {
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
 
   const cardVariants = {
-    enter: { opacity: 0, y: 12 },
-    center: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -12 },
+    enter: { opacity: 0, x: 60 },
+    center: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -60 },
   };
 
   return (
@@ -93,7 +93,7 @@ function TestimonialsCarousel() {
 
         <div className="relative px-12">
           {/* Desktop: 3 cards lado a lado, altura fixa — anima o grupo inteiro */}
-          <div className="hidden md:block h-52">
+          <div className="hidden md:block h-52 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -119,7 +119,7 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Mobile: 1 card, altura fixa */}
-          <div className="md:hidden h-52">
+          <div className="md:hidden h-52 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
