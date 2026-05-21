@@ -296,7 +296,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12 max-w-4xl mx-auto">
             {[
               { title: "PGR", desc: "Programa de Gerenciamento de Riscos completo, identificando e controlando riscos ocupacionais.", icon: ClipboardList },
               { title: "PCMSO", desc: "Programa de Controle Médico de Saúde Ocupacional, monitorando a saúde dos colaboradores.", icon: HeartPulse },
