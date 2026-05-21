@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -78,6 +78,12 @@ function TestimonialsCarousel() {
 
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
 
+  const cardVariants = {
+    enter: { opacity: 0, y: 12 },
+    center: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -12 },
+  };
+
   return (
     <section className="py-16 md:py-24 bg-[#F4F7FF]">
       <div className="container mx-auto px-4">
@@ -86,34 +92,52 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="relative px-12">
-          <div className="hidden md:grid grid-cols-3 gap-6">
-            {visible.map((idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
-                <div className="w-10 h-1 rounded-full bg-[#228848]" />
-                <p className="text-gray-700 text-sm leading-relaxed flex-1">{testimonials[idx].text}</p>
-                <div>
-                  <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
-                  <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
-                </div>
-              </div>
-            ))}
+          {/* Desktop: 3 cards lado a lado, altura fixa — anima o grupo inteiro */}
+          <div className="hidden md:block h-52">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                variants={cardVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="grid grid-cols-3 gap-6 h-full"
+              >
+                {visible.map((idx) => (
+                  <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4 h-full">
+                    <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
+                    <p className="text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden">{testimonials[idx].text}</p>
+                    <div className="shrink-0">
+                      <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
+                      <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <div className="md:hidden">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35 }}
-              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4"
-            >
-              <div className="w-10 h-1 rounded-full bg-[#228848]" />
-              <p className="text-gray-700 text-sm leading-relaxed">{testimonials[current].text}</p>
-              <div>
-                <p className="font-semibold text-[#0A1628] text-sm">{testimonials[current].name}</p>
-                <p className="text-gray-500 text-xs">{testimonials[current].role}</p>
-              </div>
-            </motion.div>
+          {/* Mobile: 1 card, altura fixa */}
+          <div className="md:hidden h-52">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                variants={cardVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4 h-full"
+              >
+                <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
+                <p className="text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden">{testimonials[current].text}</p>
+                <div className="shrink-0">
+                  <p className="font-semibold text-[#0A1628] text-sm">{testimonials[current].name}</p>
+                  <p className="text-gray-500 text-xs">{testimonials[current].role}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           <button
