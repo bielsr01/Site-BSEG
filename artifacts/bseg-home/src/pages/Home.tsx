@@ -88,7 +88,7 @@ function TestimonialsCarousel() {
 
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
 
-  const slideTransition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" };
+  const slideTransition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" as const };
 
   const CardContent = ({ idx }: { idx: number }) => (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col gap-3 h-full">
