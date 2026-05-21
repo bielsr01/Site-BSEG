@@ -55,11 +55,16 @@ import testimonial4 from "@assets/testimonial_group17_1.png";
 
 const heroSlides = [heroSlide1, heroSlideNew2, heroSlideNew];
 
-const testimonialImages = [testimonial1, testimonial2, testimonial3, testimonial4];
+const testimonials = [
+  { name: "Fernando Tinoco", role: "Empresário", text: "\"Reduzimos significativamente nossos riscos trabalhistas com a consultoria da BSeg. Parceria valiosa!\"" },
+  { name: "Carlos Magno", role: "Gestor de RH", text: "\"A BSeg nos ajudou a estruturar um ambiente de trabalho seguro e totalmente em conformidade com as normas. Excelente serviço!\"" },
+  { name: "Juliana Ribeiro", role: "Diretora de Segurança Ocupacional", text: "\"Profissionais altamente capacitados e sempre dispostos a oferecer suporte rápido e eficiente. Recomendo!\"" },
+  { name: "Ricardo Alves", role: "Diretor de Operações", text: "\"A BSeg transformou nossa gestão de SST. Hoje temos todos os documentos em dia e sem dor de cabeça.\"" },
+];
 
 function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
-  const total = testimonialImages.length;
+  const total = testimonials.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -71,9 +76,7 @@ function TestimonialsCarousel() {
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
 
-  const getVisible = () => {
-    return [0, 1, 2].map((offset) => (current + offset) % total);
-  };
+  const visible = [0, 1, 2].map((offset) => (current + offset) % total);
 
   return (
     <section className="py-16 md:py-24 bg-[#F4F7FF]">
@@ -82,44 +85,47 @@ function TestimonialsCarousel() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
         </div>
 
-        <div className="relative">
-          <div className="hidden md:flex gap-6 justify-center items-center">
-            {getVisible().map((idx, pos) => (
-              <motion.img
-                key={idx}
-                src={testimonialImages[idx]}
-                alt={`Depoimento ${idx + 1}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: pos === 1 ? 1 : 0.7, y: 0, scale: pos === 1 ? 1.03 : 1 }}
-                transition={{ duration: 0.4 }}
-                className="h-60 w-auto object-contain rounded-2xl cursor-pointer"
-                onClick={pos === 0 ? prev : pos === 2 ? next : undefined}
-              />
+        <div className="relative px-12">
+          <div className="hidden md:grid grid-cols-3 gap-6">
+            {visible.map((idx) => (
+              <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+                <div className="w-10 h-1 rounded-full bg-[#228848]" />
+                <p className="text-gray-700 text-sm leading-relaxed flex-1">{testimonials[idx].text}</p>
+                <div>
+                  <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
+                  <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="md:hidden flex justify-center">
-            <motion.img
+          <div className="md:hidden">
+            <motion.div
               key={current}
-              src={testimonialImages[current]}
-              alt={`Depoimento ${current + 1}`}
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.35 }}
-              className="h-64 w-auto object-contain rounded-2xl"
-            />
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4"
+            >
+              <div className="w-10 h-1 rounded-full bg-[#228848]" />
+              <p className="text-gray-700 text-sm leading-relaxed">{testimonials[current].text}</p>
+              <div>
+                <p className="font-semibold text-[#0A1628] text-sm">{testimonials[current].name}</p>
+                <p className="text-gray-500 text-xs">{testimonials[current].role}</p>
+              </div>
+            </motion.div>
           </div>
 
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-xl text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
             aria-label="Anterior"
           >
             ‹
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-xl text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
             aria-label="Próximo"
           >
             ›
@@ -127,7 +133,7 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="flex justify-center gap-2 mt-6">
-          {testimonialImages.map((_, i) => (
+          {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
