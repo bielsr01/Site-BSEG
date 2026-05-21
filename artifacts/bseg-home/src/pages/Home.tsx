@@ -696,12 +696,12 @@ export default function Home() {
                               <SelectValue placeholder="Selecione uma opção" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="max-w-[calc(100vw-2.5rem)]">
                             <SelectItem value="esocial">Regularização eSocial</SelectItem>
                             <SelectItem value="pgr-pcmso">PGR / PCMSO</SelectItem>
                             <SelectItem value="treinamentos">Treinamentos NRs</SelectItem>
                             <SelectItem value="laudos">Laudos Técnicos</SelectItem>
-                            <SelectItem value="nao-sei">Ainda não sei, quero um diagnóstico</SelectItem>
+                            <SelectItem value="nao-sei">Quero um diagnóstico gratuito</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
