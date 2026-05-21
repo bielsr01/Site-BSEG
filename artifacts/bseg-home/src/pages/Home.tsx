@@ -324,8 +324,9 @@ export default function Home() {
 
           <div className="text-center">
             <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-orcamento-servicos">
-              <Button size="lg" className="bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#228848]/30">
-                Solicitar orçamento para minha empresa
+              <Button size="lg" className="bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#228848]/30 flex items-center gap-3">
+                <SiWhatsapp className="w-5 h-5 shrink-0" />
+                Entre em contato no WhatsApp
               </Button>
             </a>
           </div>
