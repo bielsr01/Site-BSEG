@@ -100,13 +100,13 @@ function TestimonialsCarousel() {
   );
 
   return (
-    <section className="py-16 md:py-24 bg-[#F4F7FF]">
+    <section className="py-16 md:py-24 bg-[#F4F7FF] rounded-b-[3rem]">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
         </div>
 
-        <div className="relative px-12">
+        <div className="relative px-8 sm:px-12">
           {/* Desktop: 3 cards, slide horizontal */}
           <div className="hidden md:block h-52 overflow-hidden relative">
             <AnimatePresence mode="popLayout" initial={false}>
@@ -124,7 +124,7 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Mobile: 1 card, slide horizontal */}
-          <div className="md:hidden h-52 overflow-hidden relative">
+          <div className="md:hidden min-h-[200px] overflow-hidden relative">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -264,7 +264,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white">
+    <div className="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white overflow-x-hidden w-full">
       {/* 1. Header fixo */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
@@ -335,7 +335,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO */}
-      <section id="hero" className="relative pt-24 pb-12 md:pt-36 md:pb-20 min-h-[75vh] flex items-center">
+      <section id="hero" className="relative pt-24 pb-12 md:pt-36 md:pb-20 min-h-[75vh] flex items-center rounded-b-[3rem] overflow-hidden">
         {/* Background Slideshow with Cross-fade */}
         <div className="absolute inset-0 z-0">
           {heroSlides.map((slide, i) => (
@@ -358,18 +358,18 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 md:mb-6">
               Sua empresa está em dia com todas as documentações e exigências em SST?<br/>
               <span className="text-[#FF6B00]">A BSeg simplifica a gestão em segurança do trabalho do seu negócio.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed font-medium">
+            <p className="text-base md:text-xl text-white/80 mb-8 md:mb-10 max-w-2xl leading-relaxed font-medium">
               Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto" data-testid="btn-hero-primary">
-                <Button size="lg" className="w-full text-white h-14 px-8 text-base font-bold shadow-xl flex items-center gap-3 border-0" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
+                <Button size="lg" className="w-full text-white h-14 px-8 text-base font-bold shadow-xl flex items-center gap-3 border-0 transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
                   Fale Conosco
                 </Button>
@@ -381,14 +381,14 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-4 mt-10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 md:mt-10">
               {[
                 { value: "500+", label: "EMPRESAS\nATENDIDAS" },
                 { value: "10+", label: "ANOS DE\nEXPERIÊNCIA" },
                 { value: "1.500+", label: "DOCUMENTOS\nEMITIDOS" },
                 { value: "100%", label: "SATISFAÇÃO\n(%)" },
               ].map((stat) => (
-                <div key={stat.label} className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-4 flex flex-col items-start min-w-[120px]">
+                <div key={stat.label} className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl px-4 py-4 flex flex-col items-center sm:items-start text-center sm:text-left">
                   <span className="text-2xl md:text-3xl font-extrabold text-[#228848]">{stat.value}</span>
                   <span className="text-xs font-semibold text-white/70 uppercase tracking-wider mt-1 whitespace-pre-line leading-tight">{stat.label}</span>
                 </div>
@@ -421,18 +421,18 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-black font-bold text-lg uppercase tracking-widest mb-3">Quem somos?</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-6">
+              <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6">
                 A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
                 Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
               </p>
               <p className="text-gray-600 leading-relaxed mb-10">
                 A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
-              <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-sobre-wa">
-                <Button className="bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-8 font-bold flex items-center gap-3 uppercase tracking-wide">
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto block" data-testid="btn-sobre-wa">
+                <Button className="w-full sm:w-auto bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-6 font-bold flex items-center justify-center gap-3 uppercase tracking-wide text-sm sm:text-base">
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
                   Entre em contato no WhatsApp
                 </Button>
@@ -444,21 +444,21 @@ export default function Home() {
       </section>
 
       {/* 4. Nossos Serviços */}
-      <section id="servicos" className="py-20 md:py-32 bg-[#0A1628]">
+      <section id="servicos" className="py-20 md:py-32 bg-[#0A1628] rounded-t-[3rem]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-4">
-            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-white font-bold text-[22px]">
+            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-white font-bold text-base sm:text-[22px]">
               <span className="w-8 h-px inline-block bg-white/50"></span>
               Nossos Serviços
               <span className="w-8 h-px inline-block bg-white/50"></span>
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Soluções completas para sua empresa</h2>
-            <p className="text-lg text-white/60">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4">Soluções completas para sua empresa</h2>
+            <p className="text-base md:text-lg text-white/60">
               Oferecemos um portfólio completo de serviços para garantir a segurança e saúde dos seus colaboradores.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-14 mt-12 max-w-4xl mx-auto">
             {[
               { title: "PGR", desc: "Programa de Gerenciamento de Riscos completo, identificando e controlando riscos ocupacionais.", icon: ClipboardList },
               { title: "PCMSO", desc: "Programa de Controle Médico de Saúde Ocupacional, monitorando a saúde dos colaboradores.", icon: HeartPulse },
@@ -484,9 +484,9 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
-            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-orcamento-servicos">
-              <Button size="lg" className="bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#228848]/30 gap-3">
+          <div className="text-center px-4">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" className="block w-full sm:w-auto sm:inline-block" data-testid="btn-orcamento-servicos">
+              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-8 text-base md:text-lg font-bold shadow-xl shadow-[#228848]/30 gap-3">
                 <SiWhatsapp className="w-5 h-5 shrink-0" />
                 Entre em contato no WhatsApp
               </Button>
@@ -499,14 +499,14 @@ export default function Home() {
       <TestimonialsCarousel />
 
       {/* 6. Por que escolher a BSeg? (Diferenciais) */}
-      <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden">
+      <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden rounded-b-[3rem]">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative pb-0 lg:pb-12"
             >
               <div className="absolute -inset-4 bg-[#228848]/10 rounded-[3rem] transform -rotate-3 z-0"></div>
               <img 
@@ -514,14 +514,14 @@ export default function Home() {
                 alt="Engenheiros no escritório" 
                 className="relative z-10 rounded-[2rem] shadow-2xl object-cover object-top aspect-[4/3] w-full"
               />
-              <div className="absolute -bottom-8 -left-8 z-20 bg-[#0A1628] text-white p-6 rounded-2xl shadow-xl max-w-[280px]">
-                <p className="font-bold text-lg mb-1 text-[#25D366]">Atendimento Nacional</p>
+              <div className="relative lg:absolute lg:-bottom-8 lg:-left-8 z-20 bg-[#0A1628] text-white p-4 lg:p-6 rounded-2xl shadow-xl mt-4 lg:mt-0 max-w-full lg:max-w-[280px]">
+                <p className="font-bold text-base lg:text-lg mb-1 text-[#25D366]">Atendimento Nacional</p>
                 <p className="text-sm text-white/80">Atendemos empresas em todo o Brasil com suporte remoto e presencial.</p>
               </div>
             </motion.div>
 
             <div className="lg:pl-8">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-10">Por que mais de 500 empresas escolheram a BSeg?</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-6 md:mb-10">Por que mais de 500 empresas escolheram a BSeg?</h2>
               
               <div className="space-y-8 mb-12">
                 {[
@@ -561,9 +561,10 @@ export default function Home() {
                 ))}
               </div>
 
-              <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-diagnostico-diferenciais">
-                <Button size="lg" className="bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#FF6B00]/20 w-full sm:w-auto">
-                  Agendar diagnóstico gratuito
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="block w-full sm:w-auto" data-testid="btn-diagnostico-diferenciais">
+                <Button size="lg" className="w-full sm:w-auto text-white h-14 px-8 text-base md:text-lg font-bold shadow-xl flex items-center justify-center gap-3 border-0 transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
+                  <SiWhatsapp className="w-5 h-5 shrink-0" />
+                  Solicitar diagnóstico gratuito
                 </Button>
               </a>
             </div>
@@ -572,10 +573,10 @@ export default function Home() {
       </section>
 
       {/* 7. FAQ */}
-      <section id="faq" className="py-20 md:py-32 bg-[#F4F7FF]">
+      <section id="faq" className="py-20 md:py-32 bg-[#F4F7FF] relative z-10 -mt-[3rem] pt-[3rem]">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Dúvidas frequentes</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Dúvidas frequentes</h2>
             <div className="w-24 h-1 bg-[#228848] mx-auto rounded-full"></div>
           </div>
 
@@ -599,7 +600,7 @@ export default function Home() {
               },
             ].map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-100 last:border-0 py-2">
-                <AccordionTrigger className="text-left text-lg font-bold text-[#0A1628] hover:text-[#228848]">
+                <AccordionTrigger className="text-left text-base md:text-lg font-bold text-[#0A1628] hover:text-[#228848]">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 text-base leading-relaxed pt-2 pb-6">
@@ -616,8 +617,8 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 mb-24">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Solicite seu Diagnóstico Gratuito</h2>
-              <p className="text-lg text-white/80 mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">Solicite seu Diagnóstico Gratuito</h2>
+              <p className="text-base md:text-lg text-white/80 mb-8 md:mb-12">
                 Preencha o formulário e um Engenheiro de Segurança entrará em contato em até 24 horas.
               </p>
 
@@ -715,9 +716,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="border-t border-white/10 pt-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-            <div className="flex gap-6 text-sm text-white/60 font-medium">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-white/60 font-medium">
               {navLinks.map(link => (
                 <a key={link.name} href={link.href} className="hover:text-white transition-colors">
                   {link.name}
