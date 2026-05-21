@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "PORT=3000 BASE_PATH=/nrs/ pnpm --filter @workspace/certificados-nr run build && pnpm --filter @workspace/bseg-home run build && cp -r artifacts/certificados-nr/dist/public artifacts/bseg-home/dist/public/nrs",
+  "buildCommand": "PORT=3000 BASE_PATH=/nrs/ NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter @workspace/certificados-nr run build && BASE_PATH=/ NODE_OPTIONS=--max-old-space-size=4096 pnpm --filter @workspace/bseg-home run build && cp -r artifacts/certificados-nr/dist/public artifacts/bseg-home/dist/public/nrs",
   "outputDirectory": "artifacts/bseg-home/dist/public",
   "rewrites": [
     { "source": "/nrs/(.*)", "destination": "/nrs/index.html" },
