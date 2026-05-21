@@ -62,6 +62,19 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
+function applyPhoneMask(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function toWaLink(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  const number = digits.startsWith("55") ? digits : `55${digits}`;
+  return `https://wa.me/${number}`;
+}
+
 export default function Home() {
   const { toast } = useToast();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -104,6 +117,7 @@ export default function Home() {
           from_name: values.nome,
           empresa: values.empresa,
           telefone: values.telefone,
+          wa_link: toWaLink(values.telefone),
           necessidade: necessidadeLabel[values.necessidade] ?? values.necessidade,
           to_email: "bielsr01@gmail.com",
         },
@@ -653,7 +667,13 @@ export default function Home() {
                       <FormItem>
                         <FormLabel className="text-[#0A1628] font-bold">Telefone / WhatsApp</FormLabel>
                         <FormControl>
-                          <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-telefone" />
+                          <Input
+                            placeholder="(00) 00000-0000"
+                            {...field}
+                            onChange={(e) => field.onChange(applyPhoneMask(e.target.value))}
+                            className="h-12 bg-gray-50 border-gray-200"
+                            data-testid="input-telefone"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
