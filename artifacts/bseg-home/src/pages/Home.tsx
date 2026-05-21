@@ -752,7 +752,7 @@ export default function Home() {
               ))}
             </div>
             <p className="text-white/40 text-sm text-center md:text-right">
-              © 2025 BSeg Segurança do Trabalho.<br/>Todos os direitos reservados.
+              © 2026 BSeg Segurança do Trabalho.<br/>Todos os direitos reservados.
             </p>
           </div>
         </div>
