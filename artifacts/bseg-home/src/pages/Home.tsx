@@ -407,12 +407,12 @@ export default function Home() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex justify-center"
+              className="flex justify-center px-0"
             >
               <img
                 src={sobreGroup6}
                 alt="Engenheiros BSeg em campo"
-                className="w-full max-w-md lg:max-w-full object-contain"
+                className="w-full max-w-md lg:max-w-full object-contain rounded-2xl"
               />
             </motion.div>
 
@@ -422,13 +422,13 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6 text-justify">
                 A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 text-justify">
                 Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-10">
+              <p className="text-gray-600 leading-relaxed mb-10 text-justify">
                 A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto block" data-testid="btn-sobre-wa">
