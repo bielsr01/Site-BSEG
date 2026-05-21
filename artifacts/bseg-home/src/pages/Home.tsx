@@ -111,7 +111,7 @@ function TestimonialsCarousel() {
 
         <div className="relative px-8 sm:px-12 overflow-hidden">
           {/* Desktop: 3 cards, slide horizontal — altura fixa para não ter layout shift */}
-          <div className="hidden md:block h-[198px] overflow-hidden relative rounded-2xl">
+          <div className="hidden md:block h-[183px] overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -127,7 +127,7 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Mobile: 1 card — altura generosa para caber qualquer texto */}
-          <div className="md:hidden h-[246px] overflow-hidden relative rounded-2xl">
+          <div className="md:hidden h-[231px] overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
