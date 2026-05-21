@@ -501,7 +501,7 @@ export default function Home() {
 
       {/* 6. Por que escolher a BSeg? (Diferenciais) */}
       <section id="diferenciais" className="py-12 md:py-16 bg-white overflow-hidden rounded-b-[3rem]">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="w-full max-w-screen-xl mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -521,7 +521,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="lg:pl-8">
+            <div className="lg:pl-8 min-w-0">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-6 md:mb-10">Por que mais de 500 empresas escolheram a BSeg?</h2>
               
               <div className="space-y-8 mb-12">
@@ -615,9 +615,9 @@ export default function Home() {
 
       {/* 8. Formulário de conversão + Footer */}
       <section id="contato" className="bg-[#0A1628] text-white pt-14 pb-10">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="w-full max-w-screen-xl mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
-            <div>
+            <div className="min-w-0">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">Solicite seu Diagnóstico Gratuito</h2>
               <p className="text-base md:text-lg text-white/80 mb-8 md:mb-12">
                 Preencha o formulário e um Engenheiro de Segurança entrará em contato em até 24 horas.
@@ -640,14 +640,14 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-1">E-mail</p>
-                    <p className="text-xl font-bold">contato@bsegsst.com</p>
+                    <p className="text-lg font-bold break-all">contato@bsegsst.com</p>
                   </div>
                 </div>
 
               </div>
             </div>
 
-            <div className="bg-white text-[#0A1628] p-8 md:p-10 rounded-3xl shadow-2xl">
+            <div className="bg-white text-[#0A1628] p-6 md:p-10 rounded-3xl shadow-2xl min-w-0">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
