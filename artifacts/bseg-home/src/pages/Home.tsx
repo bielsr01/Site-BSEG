@@ -285,7 +285,7 @@ export default function Home() {
               </h3>
               <ul className="space-y-6 relative z-10">
                 {[
-                  "Gestão completa dos eventos SST no eSocial.",
+                  "Gestão completa de documentos e eventos SST no eSocial.",
                   "Laudos e programas elaborados por Engenheiros habilitados.",
                   "Atualização contínua conforme legislação vigente.",
                   "Treinamentos certificados que protegem empresa e colaboradores."
