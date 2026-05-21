@@ -30,7 +30,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 import heroSlide1 from "@assets/hero-slide-1.png";
@@ -690,20 +689,21 @@ export default function Home() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-[#0A1628] font-bold">Necessidade principal</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value} modal={false}>
-                          <FormControl>
-                            <SelectTrigger className="h-12 bg-gray-50 border-gray-200" data-testid="select-necessidade">
-                              <SelectValue placeholder="Selecione uma opção" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent className="max-w-[calc(100vw-2.5rem)]">
-                            <SelectItem value="esocial">Regularização eSocial</SelectItem>
-                            <SelectItem value="pgr-pcmso">PGR / PCMSO</SelectItem>
-                            <SelectItem value="treinamentos">Treinamentos NRs</SelectItem>
-                            <SelectItem value="laudos">Laudos Técnicos</SelectItem>
-                            <SelectItem value="nao-sei">Quero um diagnóstico gratuito</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FormControl>
+                          <select
+                            {...field}
+                            data-testid="select-necessidade"
+                            className="w-full h-12 px-3 rounded-md border border-gray-200 bg-gray-50 text-[#0A1628] text-sm focus:outline-none focus:ring-2 focus:ring-[#228848] appearance-none"
+                            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center" }}
+                          >
+                            <option value="" disabled>Selecione uma opção</option>
+                            <option value="esocial">Regularização eSocial</option>
+                            <option value="pgr-pcmso">PGR / PCMSO</option>
+                            <option value="treinamentos">Treinamentos NRs</option>
+                            <option value="laudos">Laudos Técnicos</option>
+                            <option value="nao-sei">Quero um diagnóstico gratuito</option>
+                          </select>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
