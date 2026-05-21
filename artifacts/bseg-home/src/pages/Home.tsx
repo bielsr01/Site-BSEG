@@ -53,6 +53,11 @@ import testimonial3 from "@assets/testimonial_group17.png";
 import testimonial4 from "@assets/testimonial_group17_1.png";
 
 const heroSlides = [heroSlide1, heroSlideNew2, heroSlideNew];
+const heroSlideAlts = [
+  "Equipe B.SEG SST em campo realizando serviços de segurança do trabalho",
+  "Profissionais B.SEG SST em consultoria de SST",
+  "B.SEG SST - Soluções completas em segurança e saúde no trabalho",
+];
 
 const testimonials = [
   { name: "Fernando Tinoco", role: "Empresário", text: "\"Reduzimos significativamente nossos riscos trabalhistas com a consultoria da BSeg. Parceria valiosa!\"" },
@@ -344,7 +349,7 @@ export default function Home() {
             <img
               key={i}
               src={slide}
-              alt=""
+              alt={heroSlideAlts[i]}
               className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
               style={{ opacity: i === currentSlide ? 1 : 0 }}
               loading={i === 0 ? "eager" : "lazy"}
