@@ -686,27 +686,52 @@ export default function Home() {
                   <FormField
                     control={form.control}
                     name="necessidade"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#0A1628] font-bold">Necessidade principal</FormLabel>
-                        <FormControl>
-                          <select
-                            {...field}
-                            data-testid="select-necessidade"
-                            className="w-full h-12 px-3 rounded-md border border-gray-200 bg-gray-50 text-[#0A1628] text-sm focus:outline-none focus:ring-2 focus:ring-[#228848] appearance-none"
-                            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center" }}
-                          >
-                            <option value="" disabled>Selecione uma opção</option>
-                            <option value="esocial">Regularização eSocial</option>
-                            <option value="pgr-pcmso">PGR / PCMSO</option>
-                            <option value="treinamentos">Treinamentos NRs</option>
-                            <option value="laudos">Laudos Técnicos</option>
-                            <option value="nao-sei">Quero um diagnóstico gratuito</option>
-                          </select>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    render={({ field }) => {
+                      const options = [
+                        { value: "esocial", label: "Regularização eSocial" },
+                        { value: "pgr-pcmso", label: "PGR / PCMSO" },
+                        { value: "treinamentos", label: "Treinamentos NRs" },
+                        { value: "laudos", label: "Laudos Técnicos" },
+                        { value: "nao-sei", label: "Quero um diagnóstico gratuito" },
+                      ];
+                      const selected = options.find(o => o.value === field.value);
+                      const [open, setOpen] = useState(false);
+                      return (
+                        <FormItem>
+                          <FormLabel className="text-[#0A1628] font-bold">Necessidade principal</FormLabel>
+                          <FormControl>
+                            <div className="relative" data-testid="select-necessidade">
+                              <button
+                                type="button"
+                                onClick={() => setOpen(v => !v)}
+                                onBlur={() => setTimeout(() => setOpen(false), 150)}
+                                className={`w-full h-12 px-3 pr-10 rounded-md border bg-gray-50 text-sm text-left flex items-center justify-between transition-colors ${open ? "border-[#228848] ring-2 ring-[#228848]/20" : "border-gray-200"} ${selected ? "text-[#0A1628]" : "text-gray-400"}`}
+                              >
+                                <span>{selected ? selected.label : "Selecione uma opção"}</span>
+                                <svg className={`w-4 h-4 text-gray-500 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </button>
+                              {open && (
+                                <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+                                  {options.map(opt => (
+                                    <button
+                                      key={opt.value}
+                                      type="button"
+                                      onMouseDown={() => { field.onChange(opt.value); setOpen(false); }}
+                                      className={`w-full text-left px-4 py-3 text-sm transition-colors hover:bg-[#228848]/10 hover:text-[#228848] ${field.value === opt.value ? "bg-[#228848]/10 text-[#228848] font-semibold" : "text-[#0A1628]"}`}
+                                    >
+                                      {opt.label}
+                                    </button>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      );
+                    }}
                   />
 
                   <Button type="submit" size="lg" disabled={isSending} className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 text-lg font-bold shadow-xl mt-4 disabled:opacity-70" data-testid="btn-submit-contato">
