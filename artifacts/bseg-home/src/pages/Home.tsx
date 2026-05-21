@@ -350,8 +350,8 @@ export default function Home() {
               style={{ opacity: i === currentSlide ? 1 : 0 }}
             />
           ))}
-          <div className="absolute inset-0 bg-[#0A1628]/35"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent opacity-40"></div>
+          <div className="absolute inset-0 bg-[#0A1628]/43"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent opacity-[43%]"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
