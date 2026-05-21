@@ -614,15 +614,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-[#228848] shrink-0 border border-white/10">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-1">Endereço</p>
-                    <p className="text-lg font-bold">Rua Jorge Sanwais, 1001<br/>Foz do Iguaçu - PR</p>
-                  </div>
-                </div>
               </div>
             </div>
 
