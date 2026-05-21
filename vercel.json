@@ -1,4 +1,5 @@
 {
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "chmod +x ./build-vercel.sh && ./build-vercel.sh",
   "outputDirectory": "artifacts/bseg-home/dist/public",
   "rewrites": [
