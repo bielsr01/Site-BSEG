@@ -744,13 +744,6 @@ export default function Home() {
 
           <div className="border-t border-white/10 pt-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-white/60 font-medium">
-              {navLinks.map(link => (
-                <a key={link.name} href={link.href} className="hover:text-white transition-colors">
-                  {link.name}
-                </a>
-              ))}
-            </div>
             <p className="text-white/40 text-sm text-center md:text-right">
               © 2026 BSeg Segurança do Trabalho.<br/>Todos os direitos reservados.
             </p>
