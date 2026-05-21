@@ -428,7 +428,7 @@ export default function Home() {
                 Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="block" data-testid="btn-sobre-wa">
-                <Button className="w-full bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-6 font-bold flex items-center justify-center gap-3 uppercase tracking-wide text-sm sm:text-base">
+                <Button className="w-full text-white h-14 px-8 text-base font-bold shadow-xl flex items-center justify-center gap-3 border-0 transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
                   Entre em contato no WhatsApp
                 </Button>
@@ -486,7 +486,7 @@ export default function Home() {
 
           <div className="text-center px-4">
             <a href={WA_LINK} target="_blank" rel="noreferrer" className="block w-full sm:w-auto sm:inline-block" data-testid="btn-orcamento-servicos">
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-8 text-base md:text-lg font-bold shadow-xl shadow-[#228848]/30 gap-3">
+              <Button size="lg" className="w-full sm:w-auto text-white h-14 px-8 text-base md:text-lg font-bold shadow-xl shadow-[#228848]/30 gap-3 border-0" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
                 <SiWhatsapp className="w-5 h-5 shrink-0" />
                 Entre em contato no WhatsApp
               </Button>
@@ -734,8 +734,8 @@ export default function Home() {
                     }}
                   />
 
-                  <Button type="submit" size="lg" disabled={isSending} className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 text-lg font-bold shadow-xl mt-4 disabled:opacity-70" data-testid="btn-submit-contato">
-                    {isSending ? "Enviando..." : "Enviar e aguardar contato"}
+                  <Button type="submit" size="lg" disabled={isSending} className="w-full bg-[#0A1628] hover:bg-[#0d1f38] text-white h-14 text-lg font-bold shadow-xl mt-4 border-0 disabled:opacity-70" data-testid="btn-submit-contato">
+                    {isSending ? "Enviando..." : "Enviar"}
                   </Button>
                 </form>
               </Form>
