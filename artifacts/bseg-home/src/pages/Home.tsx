@@ -65,6 +65,7 @@ const testimonials = [
 function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [timerKey, setTimerKey] = useState(0);
   const total = testimonials.length;
 
   useEffect(() => {
@@ -73,15 +74,17 @@ function TestimonialsCarousel() {
       setCurrent((c) => (c + 1) % total);
     }, 4000);
     return () => clearInterval(timer);
-  }, [total]);
+  }, [total, timerKey]);
 
   const prev = () => {
     setDirection(-1);
     setCurrent((c) => (c - 1 + total) % total);
+    setTimerKey((k) => k + 1);
   };
   const next = () => {
     setDirection(1);
     setCurrent((c) => (c + 1) % total);
+    setTimerKey((k) => k + 1);
   };
 
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
@@ -108,7 +111,7 @@ function TestimonialsCarousel() {
 
         <div className="relative px-8 sm:px-12 overflow-hidden">
           {/* Desktop: 3 cards, slide horizontal — altura fixa para não ter layout shift */}
-          <div className="hidden md:block h-52 overflow-hidden relative rounded-2xl">
+          <div className="hidden md:block h-[198px] overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -124,7 +127,7 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Mobile: 1 card — altura generosa para caber qualquer texto */}
-          <div className="md:hidden h-64 overflow-hidden relative rounded-2xl">
+          <div className="md:hidden h-[246px] overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -159,7 +162,7 @@ function TestimonialsCarousel() {
           {testimonials.map((_, i) => (
             <button
               key={i}
-              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); setTimerKey((k) => k + 1); }}
               className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-[#228848] scale-125" : "bg-gray-300"}`}
               aria-label={`Ir para depoimento ${i + 1}`}
             />
