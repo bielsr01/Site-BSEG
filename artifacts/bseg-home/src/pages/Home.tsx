@@ -201,9 +201,9 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto" data-testid="btn-hero-primary">
-                <Button size="lg" className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-8 text-base font-bold shadow-xl shadow-[#FF6B00]/20 flex items-center gap-3">
+                <Button size="lg" className="w-full text-white h-14 px-8 text-base font-bold shadow-xl flex items-center gap-3 border-0" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
-                  Entre em contato no Whatsapp
+                  Fale Conosco
                 </Button>
               </a>
               <a href="#servicos" className="w-full sm:w-auto" data-testid="btn-hero-secondary">
