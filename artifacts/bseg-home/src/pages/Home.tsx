@@ -281,7 +281,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Problema vs Solução */}
+      {/* 4. Nossos Serviços */}
+      <section id="servicos" className="py-20 md:py-32 bg-[#0A1628]">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-4">
+            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-white font-bold text-[22px]">
+              <span className="w-8 h-px inline-block bg-white/50"></span>
+              Nossos Serviços
+              <span className="w-8 h-px inline-block bg-white/50"></span>
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Soluções completas para sua empresa</h2>
+            <p className="text-lg text-white/60">
+              Oferecemos um portfólio completo de serviços para garantir a segurança e saúde dos seus colaboradores.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12">
+            {[
+              { title: "PGR", desc: "Programa de Gerenciamento de Riscos completo, identificando e controlando riscos ocupacionais.", icon: ClipboardList },
+              { title: "PCMSO", desc: "Programa de Controle Médico de Saúde Ocupacional, monitorando a saúde dos colaboradores.", icon: HeartPulse },
+              { title: "LTCAT", desc: "Laudo Técnico das Condições Ambientais do Trabalho para aposentadoria especial.", icon: BarChart2 },
+              { title: "Treinamentos NR", desc: "Capacitação profissional em todas as Normas Regulamentadoras com certificação.", icon: BookOpen },
+              { title: "eSocial SST", desc: "Gestão completa dos eventos de SST no eSocial, garantindo envio correto e dentro dos prazos.", icon: Monitor },
+              { title: "Exames Ocupacionais", desc: "Admissionais, periódicos, demissionais e complementares com rede credenciada.", icon: Stethoscope }
+            ].map((srv, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white/5 border border-white/10 p-8 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.25)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default"
+              >
+                <div className="w-11 h-11 bg-[#228848]/20 rounded-xl flex items-center justify-center text-[#25D366] mb-6">
+                  <srv.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{srv.title}</h3>
+                <p className="text-white/55 leading-relaxed text-sm">{srv.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-orcamento-servicos">
+              <Button size="lg" className="bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#228848]/30">
+                Solicitar orçamento para minha empresa
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Problema vs Solução */}
       <section className="py-20 md:py-32 relative bg-[#0A1628] text-white">
         <div className="absolute inset-0 z-0">
           <img 
@@ -361,81 +412,6 @@ export default function Home() {
             <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-blindar-empresa">
               <Button size="lg" className="bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 px-10 text-lg font-bold shadow-2xl shadow-[#FF6B00]/20">
                 Quero blindar minha empresa agora
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Nossos Serviços */}
-      <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF]">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-4">
-            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-[#000000] font-bold text-[22px]">
-              <span className="w-8 h-px inline-block bg-[#000000]"></span>
-              Nossos Serviços
-              <span className="w-8 h-px inline-block bg-[#000000]"></span>
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Soluções completas para sua empresa</h2>
-            <p className="text-lg text-gray-500">
-              Oferecemos um portfólio completo de serviços para garantir a segurança e saúde dos seus colaboradores.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12">
-            {[
-              {
-                title: "PGR",
-                desc: "Programa de Gerenciamento de Riscos completo, identificando e controlando riscos ocupacionais.",
-                icon: ClipboardList
-              },
-              {
-                title: "PCMSO",
-                desc: "Programa de Controle Médico de Saúde Ocupacional, monitorando a saúde dos colaboradores.",
-                icon: HeartPulse
-              },
-              {
-                title: "LTCAT",
-                desc: "Laudo Técnico das Condições Ambientais do Trabalho para aposentadoria especial.",
-                icon: BarChart2
-              },
-              {
-                title: "Treinamentos NR",
-                desc: "Capacitação profissional em todas as Normas Regulamentadoras com certificação.",
-                icon: BookOpen
-              },
-              {
-                title: "eSocial SST",
-                desc: "Gestão completa dos eventos de SST no eSocial, garantindo envio correto e dentro dos prazos.",
-                icon: Monitor
-              },
-              {
-                title: "Exames Ocupacionais",
-                desc: "Admissionais, periódicos, demissionais e complementares com rede credenciada.",
-                icon: Stethoscope
-              }
-            ].map((srv, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-white p-8 rounded-2xl border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
-              >
-                <div className="w-11 h-11 bg-[#228848]/10 rounded-xl flex items-center justify-center text-[#228848] mb-6">
-                  <srv.icon className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0A1628] mb-3">{srv.title}</h3>
-                <p className="text-gray-500 leading-relaxed text-sm">{srv.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-orcamento-servicos">
-              <Button size="lg" className="bg-gradient-to-r from-[#228848] to-[#25D366] hover:from-[#1a6e39] hover:to-[#1db954] text-white h-14 px-10 text-lg font-bold shadow-xl shadow-[#228848]/30">
-                Solicitar orçamento para minha empresa
               </Button>
             </a>
           </div>
