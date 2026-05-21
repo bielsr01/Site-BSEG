@@ -162,7 +162,6 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
 }
 
 /* Impede que o Radix UI adicione padding-right ao body ao abrir dropdowns/modais */
