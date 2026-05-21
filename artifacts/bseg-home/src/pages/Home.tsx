@@ -385,9 +385,9 @@ export default function Home() {
                 { value: "500+", label: "EMPRESAS\nATENDIDAS" },
                 { value: "10+", label: "ANOS DE\nEXPERIÊNCIA" },
                 { value: "1.500+", label: "DOCUMENTOS\nEMITIDOS" },
-                { value: "100%", label: "SATISFAÇÃO\n(%)" },
+                { value: "100%", label: "SATISFAÇÃO" },
               ].map((stat) => (
-                <div key={stat.label} className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl px-4 py-4 flex flex-col items-center sm:items-start text-center sm:text-left">
+                <div key={stat.label} className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl px-4 py-4 flex flex-col items-center text-center">
                   <span className="text-2xl md:text-3xl font-extrabold text-[#228848]">{stat.value}</span>
                   <span className="text-xs font-semibold text-white/70 uppercase tracking-wider mt-1 whitespace-pre-line leading-tight">{stat.label}</span>
                 </div>
