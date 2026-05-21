@@ -35,7 +35,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import heroSlide1 from "@assets/hero-slide-1.png";
 import heroSlideNew from "@assets/Group-29_1779326233053.png";
 import heroSlideNew2 from "@assets/Group-27-clean.png";
-import heroOfficePath from "@assets/hero-bseg-office.png";
+import heroOfficePath from "@assets/download_(10)_1779334434988.PNG";
 import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
 import sobreGroup6 from "@assets/bseg-sobre-group6.png";
