@@ -400,7 +400,7 @@ export default function Home() {
 
       {/* 3. Sobre Nós */}
       <section id="sobre" className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 sm:px-8 md:px-4">
           {/* Top: image + text */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
             <motion.div
@@ -422,13 +422,13 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6 text-justify">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6">
                 A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 text-justify">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
                 Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-10 text-justify">
+              <p className="text-gray-600 leading-relaxed mb-10">
                 A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto block" data-testid="btn-sobre-wa">
