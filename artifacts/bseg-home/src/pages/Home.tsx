@@ -561,14 +561,6 @@ export default function Home() {
                 q: "Quanto custa a assessoria de SST?",
                 a: "O valor varia conforme o número de funcionários, grau de risco e serviços necessários. Solicite um diagnóstico gratuito — o investimento costuma ser muito menor do que o custo de uma única autuação."
               },
-              {
-                q: "Quanto tempo leva para ter minha empresa regularizada?",
-                a: "Em média 15 a 30 dias úteis para a elaboração completa dos programas e laudos. Para urgências, temos atendimento prioritário."
-              },
-              {
-                q: "A BSeg fica em Foz do Iguaçu. Atende outras cidades?",
-                a: "Sim! Além de Foz do Iguaçu, atendemos toda a região Oeste do Paraná, incluindo Cascavel, Toledo, Medianeira e cidades vizinhas. Para clientes fora da região, oferecemos atendimento remoto."
-              }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-100 last:border-0 py-2">
                 <AccordionTrigger className="text-left text-lg font-bold text-[#0A1628] hover:text-[#228848]">
