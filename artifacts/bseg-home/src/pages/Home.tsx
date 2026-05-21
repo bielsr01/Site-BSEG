@@ -445,16 +445,16 @@ export default function Home() {
       </section>
 
       {/* 4. Nossos Serviços */}
-      <section id="servicos" className="py-20 md:py-32 bg-[#0A1628] rounded-t-[3rem]">
+      <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF] rounded-t-[3rem]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-4">
-            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-white font-bold text-base sm:text-[22px]">
-              <span className="w-8 h-px inline-block bg-white/50"></span>
+            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-[#0A1628] font-bold text-base sm:text-[22px]">
+              <span className="w-8 h-px inline-block bg-[#0A1628]/40"></span>
               Nossos Serviços
-              <span className="w-8 h-px inline-block bg-white/50"></span>
+              <span className="w-8 h-px inline-block bg-[#0A1628]/40"></span>
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4">Soluções completas para sua empresa</h2>
-            <p className="text-base md:text-lg text-white/60">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Soluções completas para sua empresa</h2>
+            <p className="text-base md:text-lg text-gray-500">
               Oferecemos um portfólio completo de serviços para garantir a segurança e saúde dos seus colaboradores.
             </p>
           </div>
@@ -474,13 +474,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-[#F4F7FF] border border-[#e2e8f0] p-5 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.20)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default flex flex-col items-center text-center"
+                className="p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300 cursor-default flex flex-col items-center text-center"
+                style={{
+                  background: "linear-gradient(135deg, #0A1628 0%, #228848 100%)",
+                  boxShadow: "0 4px 24px rgba(34,136,72,0.35), 0 1px 4px rgba(10,22,40,0.4)"
+                }}
               >
-                <div className="w-10 h-10 bg-[#228848]/15 rounded-xl flex items-center justify-center text-[#228848] mb-4">
+                <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center text-white mb-4">
                   <srv.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#0A1628] mb-2">{srv.title}</h3>
-                <p className="text-gray-500 leading-relaxed text-base">{srv.desc}</p>
+                <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
+                <p className="text-white/75 leading-relaxed text-base">{srv.desc}</p>
               </motion.div>
             ))}
           </div>
