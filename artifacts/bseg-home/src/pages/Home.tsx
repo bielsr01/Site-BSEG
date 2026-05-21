@@ -105,17 +105,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white">
       {/* 1. Header fixo */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <a href="#hero" className="flex items-center z-50">
-            <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-10 md:h-12 w-auto" />
-          </a>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wider text-white/90">
+        <div className="container mx-auto px-4 h-20 grid grid-cols-3 items-center">
+          {/* Left: desktop nav */}
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold tracking-wider text-white/90">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 className="hover:text-primary transition-colors py-2"
                 data-testid={`nav-link-${link.name.toLowerCase()}`}
               >
@@ -123,8 +119,18 @@ export default function Home() {
               </a>
             ))}
           </nav>
+          {/* Mobile: empty left slot */}
+          <div className="lg:hidden" />
 
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Center: logo */}
+          <div className="flex justify-center">
+            <a href="#hero" className="flex items-center z-50">
+              <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-10 md:h-12 w-auto" />
+            </a>
+          </div>
+
+          {/* Right: CTA */}
+          <div className="hidden lg:flex items-center justify-end gap-4">
             <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-header-wa">
               <Button className="bg-[#FF6B00] hover:bg-[#E66000] text-white font-bold h-11 px-6 text-sm uppercase tracking-wide shadow-lg shadow-[#FF6B00]/20">
                 Falar com Engenheiro
@@ -311,13 +317,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white/5 border border-white/10 p-8 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.25)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default"
+                className="bg-white/5 border border-white/10 p-5 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.25)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default"
               >
-                <div className="w-11 h-11 bg-[#228848]/20 rounded-xl flex items-center justify-center text-[#25D366] mb-6">
-                  <srv.icon className="w-5 h-5" />
+                <div className="w-9 h-9 bg-[#228848]/20 rounded-lg flex items-center justify-center text-[#25D366] mb-4">
+                  <srv.icon className="w-4 h-4" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{srv.title}</h3>
-                <p className="text-white/55 leading-relaxed text-sm">{srv.desc}</p>
+                <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
+                <p className="text-white/60 leading-relaxed text-base">{srv.desc}</p>
               </motion.div>
             ))}
           </div>
