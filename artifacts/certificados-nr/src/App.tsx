@@ -471,7 +471,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white rounded-t-[3rem] rounded-b-[3rem] overflow-hidden">
+    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <p className="text-[#FF6B00] font-black uppercase tracking-widest text-sm mb-3">
@@ -776,7 +776,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="font-sans text-foreground bg-background overflow-x-hidden selection:bg-[#FF6B00] selection:text-white">
-          <div className="flex flex-col lg:h-screen bg-gray-50 overflow-hidden rounded-b-[3rem]">
+          <div className="flex flex-col lg:h-screen bg-gray-50 overflow-hidden">
             <Header />
             <Hero />
           </div>
