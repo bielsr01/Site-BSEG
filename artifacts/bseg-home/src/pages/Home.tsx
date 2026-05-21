@@ -268,8 +268,8 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col font-sans selection:bg-primary selection:text-white overflow-x-hidden w-full">
-      {/* 1. Header fixo */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+      {/* 1. Header */}
+      <header className="w-full z-50 bg-[#0A1628]/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <a href="#hero" className="flex items-center z-50">
             <img src={logoPath} alt="BSeg Segurança do Trabalho" className="h-10 md:h-12 w-auto" />
@@ -338,7 +338,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO */}
-      <section id="hero" className="relative pt-24 pb-12 md:pt-36 md:pb-20 min-h-[75vh] flex items-center rounded-b-[3rem] overflow-hidden">
+      <section id="hero" className="relative py-10 md:py-14 min-h-[calc(100vh-80px)] flex items-center rounded-b-[3rem] overflow-hidden">
         {/* Background Slideshow with Cross-fade */}
         <div className="absolute inset-0 z-0">
           {heroSlides.map((slide, i) => (
