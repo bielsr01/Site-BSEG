@@ -55,7 +55,6 @@ const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1
 
 const contactSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório"),
-  empresa: z.string().min(2, "Empresa é obrigatória"),
   telefone: z.string().min(10, "Telefone inválido"),
   necessidade: z.string().min(1, "Selecione uma opção"),
 });
@@ -92,7 +91,6 @@ export default function Home() {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       nome: "",
-      empresa: "",
       telefone: "",
       necessidade: "",
     },
@@ -115,7 +113,6 @@ export default function Home() {
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: values.nome,
-          empresa: values.empresa,
           telefone: values.telefone,
           wa_link: toWaLink(values.telefone),
           necessidade: necessidadeLabel[values.necessidade] ?? values.necessidade,
@@ -640,20 +637,6 @@ export default function Home() {
                         <FormLabel className="text-[#0A1628] font-bold">Nome completo</FormLabel>
                         <FormControl>
                           <Input placeholder="Seu nome" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-nome" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="empresa"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#0A1628] font-bold">Empresa</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Nome da sua empresa" {...field} className="h-12 bg-gray-50 border-gray-200" data-testid="input-empresa" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
