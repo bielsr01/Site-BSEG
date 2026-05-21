@@ -64,25 +64,40 @@ const testimonials = [
 
 function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
   const total = testimonials.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrent((c) => (c + 1) % total);
     }, 4000);
     return () => clearInterval(timer);
   }, [total]);
 
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
+  const prev = () => {
+    setDirection(-1);
+    setCurrent((c) => (c - 1 + total) % total);
+  };
+  const next = () => {
+    setDirection(1);
+    setCurrent((c) => (c + 1) % total);
+  };
 
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
 
-  const cardVariants = {
-    enter: { opacity: 0, x: 60 },
-    center: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -60 },
-  };
+  const slideTransition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" };
+
+  const CardContent = ({ idx }: { idx: number }) => (
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4 h-full">
+      <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
+      <p className="text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden">{testimonials[idx].text}</p>
+      <div className="shrink-0">
+        <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
+        <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
+      </div>
+    </div>
+  );
 
   return (
     <section className="py-16 md:py-24 bg-[#F4F7FF]">
@@ -92,50 +107,34 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="relative px-12">
-          {/* Desktop: 3 cards lado a lado, altura fixa — anima o grupo inteiro */}
-          <div className="hidden md:block h-52 overflow-hidden">
-            <AnimatePresence mode="wait">
+          {/* Desktop: 3 cards, slide horizontal */}
+          <div className="hidden md:block h-52 overflow-hidden relative">
+            <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
-                variants={cardVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="grid grid-cols-3 gap-6 h-full"
+                initial={{ x: direction > 0 ? "100%" : "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: direction > 0 ? "-100%" : "100%" }}
+                transition={slideTransition}
+                className="absolute inset-0 grid grid-cols-3 gap-6"
               >
-                {visible.map((idx) => (
-                  <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4 h-full">
-                    <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
-                    <p className="text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden">{testimonials[idx].text}</p>
-                    <div className="shrink-0">
-                      <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
-                      <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
-                    </div>
-                  </div>
-                ))}
+                {visible.map((idx) => <CardContent key={idx} idx={idx} />)}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Mobile: 1 card, altura fixa */}
-          <div className="md:hidden h-52 overflow-hidden">
-            <AnimatePresence mode="wait">
+          {/* Mobile: 1 card, slide horizontal */}
+          <div className="md:hidden h-52 overflow-hidden relative">
+            <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
-                variants={cardVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4 h-full"
+                initial={{ x: direction > 0 ? "100%" : "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: direction > 0 ? "-100%" : "100%" }}
+                transition={slideTransition}
+                className="absolute inset-0"
               >
-                <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
-                <p className="text-gray-700 text-sm leading-relaxed flex-1 overflow-hidden">{testimonials[current].text}</p>
-                <div className="shrink-0">
-                  <p className="font-semibold text-[#0A1628] text-sm">{testimonials[current].name}</p>
-                  <p className="text-gray-500 text-xs">{testimonials[current].role}</p>
-                </div>
+                <CardContent idx={current} />
               </motion.div>
             </AnimatePresence>
           </div>
@@ -160,7 +159,7 @@ function TestimonialsCarousel() {
           {testimonials.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
               className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-[#228848] scale-125" : "bg-gray-300"}`}
               aria-label={`Ir para depoimento ${i + 1}`}
             />
