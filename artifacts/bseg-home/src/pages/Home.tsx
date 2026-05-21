@@ -100,13 +100,13 @@ function TestimonialsCarousel() {
   );
 
   return (
-    <section className="py-16 md:py-24 bg-[#F4F7FF] rounded-b-[3rem]">
+    <section className="py-16 md:py-24 bg-[#F4F7FF] rounded-b-[3rem] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
         </div>
 
-        <div className="relative px-8 sm:px-12">
+        <div className="relative px-8 sm:px-12 overflow-hidden">
           {/* Desktop: 3 cards, slide horizontal */}
           <div className="hidden md:block h-52 overflow-hidden relative">
             <AnimatePresence mode="popLayout" initial={false}>
@@ -400,14 +400,14 @@ export default function Home() {
 
       {/* 3. Sobre Nós */}
       <section id="sobre" className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 sm:px-8 md:px-4">
+        <div className="w-full max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-8">
           {/* Top: image + text */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center px-0"
+              className="flex justify-center"
             >
               <img
                 src={sobreGroup6}
@@ -417,22 +417,23 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
+              className="min-w-0 w-full overflow-hidden"
             >
               <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6 break-words">
                 A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 break-words">
                 Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-10">
+              <p className="text-gray-600 leading-relaxed mb-10 break-words">
                 A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
-              <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto block" data-testid="btn-sobre-wa">
-                <Button className="w-full sm:w-auto bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-6 font-bold flex items-center justify-center gap-3 uppercase tracking-wide text-sm sm:text-base">
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="block" data-testid="btn-sobre-wa">
+                <Button className="w-full bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-6 font-bold flex items-center justify-center gap-3 uppercase tracking-wide text-sm sm:text-base">
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
                   Entre em contato no WhatsApp
                 </Button>
@@ -506,9 +507,9 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative pb-0 lg:pb-12"
+              className="relative pb-0 lg:pb-12 overflow-hidden rounded-[2rem]"
             >
-              <div className="absolute -inset-4 bg-[#228848]/10 rounded-[3rem] transform -rotate-3 z-0"></div>
+              <div className="absolute inset-0 bg-[#228848]/10 rounded-[2rem] transform -rotate-1 z-0"></div>
               <img 
                 src={heroOfficePath} 
                 alt="Engenheiros no escritório" 
@@ -544,8 +545,8 @@ export default function Home() {
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     className="flex gap-4"
