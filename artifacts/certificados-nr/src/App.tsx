@@ -138,7 +138,7 @@ const Header = () => {
 /* ─── HERO ─── */
 const Hero = () => {
   return (
-    <section className="relative flex-1 flex items-center bg-[#0A1628] text-white overflow-hidden rounded-b-[3rem]">
+    <section className="relative flex-1 flex items-center bg-[#0A1628] text-white overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF6B00]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
@@ -471,7 +471,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white rounded-t-[3rem] rounded-b-[3rem]">
+    <section id="como-funciona" className="py-24 bg-[#0A1628] text-white rounded-t-[3rem] rounded-b-[3rem] overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <p className="text-[#FF6B00] font-black uppercase tracking-widest text-sm mb-3">
@@ -776,7 +776,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="font-sans text-foreground bg-background overflow-x-hidden selection:bg-[#FF6B00] selection:text-white">
-          <div className="flex flex-col lg:h-screen bg-[#0A1628] overflow-hidden">
+          <div className="flex flex-col lg:h-screen bg-[#0A1628] rounded-b-[3rem] overflow-hidden">
             <Header />
             <Hero />
           </div>
