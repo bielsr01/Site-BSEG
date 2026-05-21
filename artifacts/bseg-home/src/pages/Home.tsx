@@ -175,7 +175,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed font-medium">
-              Elaboramos laudos, treinamentos, programas ambientais e realizamos a gestão documental completa da sua empresa com o respaldo de Engenheiros especializados. Proteção jurídica garantida e zero burocracia para a sua empresa.
+              Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
