@@ -256,7 +256,7 @@ export default function Home() {
               </h3>
               <ul className="space-y-6">
                 {[
-                  "Multas de até R$6.000 por evento SST não enviado ao eSocial.",
+                  "Multas de até R$6.000 por falta de documentos obrigatórios.",
                   "Autuações do Ministério do Trabalho por laudos desatualizados.",
                   "Passivos trabalhistas por ausência de PGR, PCMSO e LTCAT.",
                   "Processos judiciais por falta de treinamentos nas NRs."
