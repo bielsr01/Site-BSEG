@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "sh build-vercel.sh",
+  "buildCommand": "pnpm run vercel-build",
   "outputDirectory": "artifacts/bseg-home/dist/public",
   "rewrites": [
     { "source": "/nrs/(.*)", "destination": "/nrs/index.html" },
