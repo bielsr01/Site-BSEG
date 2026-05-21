@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "hUeh_Mvfsd150TNOYyzCn"
+uri = "file://artifacts/bseg-home/src/assets/safety-team.jpg"
+type = "image"
+title = "professional engineers or safety workers in modern industrial environment inspecting plans"

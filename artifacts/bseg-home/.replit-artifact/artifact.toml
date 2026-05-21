@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "B.SEG SST - Site Institucional"
+version = "1.0.0"
+id = "artifacts/bseg-home"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18979
+
+[services.development]
+run = "pnpm --filter @workspace/bseg-home run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bseg-home", "run", "build" ]
+publicDir = "artifacts/bseg-home/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18979"
+BASE_PATH = "/"

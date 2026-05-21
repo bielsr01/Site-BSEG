@@ -1,5 +1,5 @@
 kind = "web"
-previewPath = "/"
+previewPath = "/nrs/"
 title = "Certificados NR - Landing Page"
 version = "1.0.0"
 id = "artifacts/certificados-nr"
@@ -11,7 +11,7 @@ version = "1.0.0"
 
 [[services]]
 name = "web"
-paths = [ "/" ]
+paths = [ "/nrs/" ]
 localPort = 25123
 
 [services.development]
@@ -23,9 +23,9 @@ publicDir = "artifacts/certificados-nr/dist/public"
 serve = "static"
 
 [[services.production.rewrites]]
-from = "/*"
+from = "/nrs/*"
 to = "/index.html"
 
 [services.env]
 PORT = "25123"
-BASE_PATH = "/"
+BASE_PATH = "/nrs/"
