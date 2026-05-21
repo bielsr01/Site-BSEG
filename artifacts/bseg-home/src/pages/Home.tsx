@@ -447,8 +447,8 @@ export default function Home() {
               <div className="space-y-8 mb-12">
                 {[
                   {
-                    title: "Engenharia no comando",
-                    desc: "Laudos assinados por Engenheiros de Segurança habilitados no CREA — não apenas técnicos."
+                    title: "Equipe especializada",
+                    desc: "Profissionais habilitados com ampla experiência no mercado."
                   },
                   {
                     title: "Entrega ágil",
