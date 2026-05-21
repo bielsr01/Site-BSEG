@@ -32,7 +32,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-import heroSlide1 from "@assets/hero-slide-1.png";
+const heroSlide1 = "/images/hero-slide-1.png";
 import heroSlideNew from "@assets/Group-29_1779326233053.png";
 import heroSlideNew2 from "@assets/Group-27-clean.png";
 import heroOfficePath from "@assets/download_(10)_1779334434988.PNG";
@@ -347,6 +347,8 @@ export default function Home() {
               alt=""
               className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
               style={{ opacity: i === currentSlide ? 1 : 0 }}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
             />
           ))}
           <div className="absolute inset-0 bg-[#0A1628]/43"></div>
