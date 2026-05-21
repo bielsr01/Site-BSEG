@@ -376,6 +376,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 5. Depoimentos */}
+      <section className="py-16 md:py-24 bg-[#F4F7FF] overflow-hidden">
+        <div className="container mx-auto px-4 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
+        </div>
+
+        <div className="marquee-wrapper relative overflow-hidden">
+          <div className="animate-marquee flex gap-6 w-max">
+            {[
+              { name: "Fernando Tinoco", role: "Empresário", initials: "FT", color: "#228848", text: "\"Reduzimos significativamente nossos riscos trabalhistas com a consultoria da BSeg. Parceria valiosa!\"" },
+              { name: "Carlos Magno", role: "Gestor de RH", initials: "CM", color: "#0A1628", text: "\"A BSeg nos ajudou a estruturar um ambiente de trabalho seguro e totalmente em conformidade com as normas. Excelente serviço!\"" },
+              { name: "Juliana Ribeiro", role: "Diretora de Segurança Ocupacional", initials: "JR", color: "#FF6B00", text: "\"Profissionais altamente capacitados e sempre dispostos a oferecer suporte rápido e eficiente. Recomendo!\"" },
+              { name: "Ricardo Alves", role: "Diretor de Operações", initials: "RA", color: "#228848", text: "\"A BSeg transformou nossa gestão de SST. Hoje temos todos os documentos em dia e sem dor de cabeça.\"" },
+              { name: "Patrícia Souza", role: "Gerente Administrativa", initials: "PS", color: "#0A1628", text: "\"Atendimento humanizado e muito eficiente. Resolveram nossas pendências com o eSocial em tempo recorde!\"" },
+              { name: "Marcos Henrique", role: "Proprietário", initials: "MH", color: "#FF6B00", text: "\"Recomendo a BSeg para qualquer empresa que precise de segurança no trabalho. Equipe muito competente.\"" },
+              { name: "Fernando Tinoco", role: "Empresário", initials: "FT", color: "#228848", text: "\"Reduzimos significativamente nossos riscos trabalhistas com a consultoria da BSeg. Parceria valiosa!\"" },
+              { name: "Carlos Magno", role: "Gestor de RH", initials: "CM", color: "#0A1628", text: "\"A BSeg nos ajudou a estruturar um ambiente de trabalho seguro e totalmente em conformidade com as normas. Excelente serviço!\"" },
+              { name: "Juliana Ribeiro", role: "Diretora de Segurança Ocupacional", initials: "JR", color: "#FF6B00", text: "\"Profissionais altamente capacitados e sempre dispostos a oferecer suporte rápido e eficiente. Recomendo!\"" },
+              { name: "Ricardo Alves", role: "Diretor de Operações", initials: "RA", color: "#228848", text: "\"A BSeg transformou nossa gestão de SST. Hoje temos todos os documentos em dia e sem dor de cabeça.\"" },
+              { name: "Patrícia Souza", role: "Gerente Administrativa", initials: "PS", color: "#0A1628", text: "\"Atendimento humanizado e muito eficiente. Resolveram nossas pendências com o eSocial em tempo recorde!\"" },
+              { name: "Marcos Henrique", role: "Proprietário", initials: "MH", color: "#FF6B00", text: "\"Recomendo a BSeg para qualquer empresa que precise de segurança no trabalho. Equipe muito competente.\"" },
+            ].map((t, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 w-80 shrink-0 flex flex-col gap-4">
+                <div className="w-10 h-1 rounded-full bg-[#228848]"></div>
+                <p className="text-gray-700 text-sm leading-relaxed flex-1">{t.text}</p>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+                    style={{ backgroundColor: t.color }}
+                  >
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#0A1628] text-sm">{t.name}</p>
+                    <p className="text-gray-500 text-xs">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 6. Por que escolher a BSeg? (Diferenciais) */}
       <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
