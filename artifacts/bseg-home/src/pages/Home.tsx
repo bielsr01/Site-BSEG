@@ -14,7 +14,13 @@ import {
   AlertTriangle, 
   Phone, 
   Mail, 
-  MapPin 
+  MapPin,
+  ClipboardList,
+  HeartPulse,
+  BarChart2,
+  BookOpen,
+  Monitor,
+  Stethoscope
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
@@ -364,34 +370,49 @@ export default function Home() {
       {/* 5. Nossos Serviços */}
       <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF]">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-6">Soluções Técnicas Especializadas</h2>
-            <p className="text-lg md:text-xl text-gray-600">
-              Da gestão do eSocial ao laudo técnico, cuidamos de tudo para que você cuide do seu negócio.
+          <div className="text-center max-w-3xl mx-auto mb-4">
+            <p className="text-sm font-semibold text-[#228848] uppercase tracking-widest flex items-center justify-center gap-2 mb-4">
+              <span className="w-8 h-px bg-[#228848] inline-block"></span>
+              Nossos Serviços
+              <span className="w-8 h-px bg-[#228848] inline-block"></span>
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Soluções completas para sua empresa</h2>
+            <p className="text-lg text-gray-500">
+              Oferecemos um portfólio completo de serviços para garantir a segurança e saúde dos seus colaboradores.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14 mt-12">
             {[
               {
-                title: "Gestão de SST para o eSocial",
-                desc: "Emissão e envio dos eventos S-2210 (acidentes), S-2220 (monitoramento da saúde), S-2240 (condições de trabalho). Sua empresa sempre em dia com o governo.",
-                icon: Database
+                title: "PGR",
+                desc: "Programa de Gerenciamento de Riscos completo, identificando e controlando riscos ocupacionais.",
+                icon: ClipboardList
               },
               {
-                title: "Programas e Laudos Técnicos",
-                desc: "Elaboração de PGR, PCMSO, LTCAT, Laudos de Insalubridade e Periculosidade por Engenheiros de Segurança registrados no CREA.",
-                icon: FileText
+                title: "PCMSO",
+                desc: "Programa de Controle Médico de Saúde Ocupacional, monitorando a saúde dos colaboradores.",
+                icon: HeartPulse
               },
               {
-                title: "Treinamentos de NRs",
-                desc: "Capacitações presenciais e online para NR-5, NR-6, NR-10, NR-12, NR-33, NR-35 e demais normas. Certificados válidos e reconhecidos.",
-                icon: GraduationCap
+                title: "LTCAT",
+                desc: "Laudo Técnico das Condições Ambientais do Trabalho para aposentadoria especial.",
+                icon: BarChart2
               },
               {
-                title: "Assistência em Perícias Trabalhistas",
-                desc: "Assistência técnica especializada em perícias judiciais e extrajudiciais, com pareceres técnicos robustos para defender sua empresa.",
-                icon: Scale
+                title: "Treinamentos NR",
+                desc: "Capacitação profissional em todas as Normas Regulamentadoras com certificação.",
+                icon: BookOpen
+              },
+              {
+                title: "eSocial SST",
+                desc: "Gestão completa dos eventos de SST no eSocial, garantindo envio correto e dentro dos prazos.",
+                icon: Monitor
+              },
+              {
+                title: "Exames Ocupacionais",
+                desc: "Admissionais, periódicos, demissionais e complementares com rede credenciada.",
+                icon: Stethoscope
               }
             ].map((srv, i) => (
               <motion.div 
@@ -399,14 +420,14 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                transition={{ delay: i * 0.08 }}
+                className="bg-white p-8 rounded-2xl border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
               >
-                <div className="w-16 h-16 bg-[#228848]/10 rounded-2xl flex items-center justify-center text-[#228848] mb-6">
-                  <srv.icon className="w-8 h-8" />
+                <div className="w-11 h-11 bg-[#228848]/10 rounded-xl flex items-center justify-center text-[#228848] mb-6">
+                  <srv.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#0A1628] mb-4">{srv.title}</h3>
-                <p className="text-gray-600 leading-relaxed font-medium">{srv.desc}</p>
+                <h3 className="text-xl font-bold text-[#0A1628] mb-3">{srv.title}</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">{srv.desc}</p>
               </motion.div>
             ))}
           </div>
