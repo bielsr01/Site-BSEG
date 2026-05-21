@@ -561,7 +561,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <a href={WA_LINK} target="_blank" rel="noreferrer" className="block w-full sm:w-auto" data-testid="btn-diagnostico-diferenciais">
+              <a href={WA_LINK} target="_blank" rel="noreferrer" className="block w-full sm:w-auto mb-8 lg:mb-0" data-testid="btn-diagnostico-diferenciais">
                 <Button size="lg" className="w-full sm:w-auto text-white h-14 px-8 text-base md:text-lg font-bold shadow-xl flex items-center justify-center gap-3 border-0 transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl" style={{ background: "linear-gradient(135deg, #228848 0%, #25D366 100%)" }}>
                   <SiWhatsapp className="w-5 h-5 shrink-0" />
                   Solicitar diagnóstico gratuito
@@ -573,7 +573,7 @@ export default function Home() {
       </section>
 
       {/* 7. FAQ */}
-      <section id="faq" className="py-20 md:py-32 bg-[#F4F7FF] relative z-10 -mt-[3rem] pt-[3rem]">
+      <section id="faq" className="py-20 md:py-32 bg-[#F4F7FF] relative z-10 -mt-[3rem] pt-[3rem] rounded-t-[3rem]">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Dúvidas frequentes</h2>
