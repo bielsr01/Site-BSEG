@@ -361,14 +361,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 md:mb-6">
-              Sua empresa está em dia com todas as documentações e exigências em SST?<br/>
-              <span className="text-[#FF6B00]">A BSeg simplifica a gestão em segurança do trabalho do seu negócio.</span>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-8 md:mb-10">
+              Simplifique a gestão de SST da sua empresa.<br/>
+              <span className="text-[#FF6B00]">Soluções completas em segurança do trabalho e saúde ocupacional.</span>
             </h1>
-            
-            <p className="text-base md:text-xl text-white/80 mb-8 md:mb-10 max-w-2xl leading-relaxed font-medium">
-              Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
-            </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="w-full sm:w-auto" data-testid="btn-hero-primary">
