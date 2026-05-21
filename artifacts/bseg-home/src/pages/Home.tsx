@@ -423,14 +423,11 @@ export default function Home() {
               className="min-w-0 w-full overflow-hidden"
             >
               <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4 md:mb-6 break-words">
-                A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-6 break-words">
+                A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional.
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 break-words">
-                Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
-              </p>
               <p className="text-gray-600 leading-relaxed mb-10 break-words">
-                A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
+                Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
               </p>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="block" data-testid="btn-sobre-wa">
                 <Button className="w-full bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-6 font-bold flex items-center justify-center gap-3 uppercase tracking-wide text-sm sm:text-base">
