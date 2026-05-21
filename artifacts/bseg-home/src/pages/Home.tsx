@@ -436,8 +436,8 @@ export default function Home() {
                 className="relative z-10 rounded-[2rem] shadow-2xl object-cover aspect-[4/3] w-full"
               />
               <div className="absolute -bottom-8 -right-8 z-20 bg-[#0A1628] text-white p-6 rounded-2xl shadow-xl max-w-[280px]">
-                <p className="font-bold text-lg mb-1 text-[#25D366]">Atendimento Local</p>
-                <p className="text-sm text-white/80">Atendemos Foz do Iguaçu e toda a região Oeste do Paraná.</p>
+                <p className="font-bold text-lg mb-1 text-[#25D366]">Atendimento Nacional</p>
+                <p className="text-sm text-white/80">Atendemos empresas em todo o Brasil com suporte remoto e presencial.</p>
               </div>
             </motion.div>
 
