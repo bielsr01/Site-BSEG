@@ -89,10 +89,10 @@ function TestimonialsCarousel() {
   const slideTransition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" };
 
   const CardContent = ({ idx }: { idx: number }) => (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col gap-3">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col gap-3 h-full">
       <div className="w-10 h-1 rounded-full bg-[#228848] shrink-0" />
-      <p className="text-gray-700 text-sm leading-relaxed">{testimonials[idx].text}</p>
-      <div>
+      <p className="text-gray-700 text-sm leading-relaxed flex-1">{testimonials[idx].text}</p>
+      <div className="shrink-0 pt-1 border-t border-gray-50">
         <p className="font-semibold text-[#0A1628] text-sm">{testimonials[idx].name}</p>
         <p className="text-gray-500 text-xs">{testimonials[idx].role}</p>
       </div>
@@ -107,8 +107,8 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="relative px-8 sm:px-12 overflow-hidden">
-          {/* Desktop: 3 cards, slide horizontal */}
-          <div className="hidden md:block overflow-hidden relative">
+          {/* Desktop: 3 cards, slide horizontal — altura fixa para não ter layout shift */}
+          <div className="hidden md:block h-52 overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -116,15 +116,15 @@ function TestimonialsCarousel() {
                 animate={{ x: 0 }}
                 exit={{ x: direction > 0 ? "-100%" : "100%" }}
                 transition={slideTransition}
-                className="grid grid-cols-3 gap-6"
+                className="absolute inset-0 grid grid-cols-3 gap-4"
               >
                 {visible.map((idx) => <CardContent key={idx} idx={idx} />)}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Mobile: 1 card, slide horizontal */}
-          <div className="md:hidden overflow-hidden relative">
+          {/* Mobile: 1 card — altura generosa para caber qualquer texto */}
+          <div className="md:hidden h-64 overflow-hidden relative rounded-2xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={current}
@@ -132,6 +132,7 @@ function TestimonialsCarousel() {
                 animate={{ x: 0 }}
                 exit={{ x: direction > 0 ? "-100%" : "100%" }}
                 transition={slideTransition}
+                className="absolute inset-0"
               >
                 <CardContent idx={current} />
               </motion.div>
