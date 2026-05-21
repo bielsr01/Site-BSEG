@@ -170,12 +170,12 @@ export default function Home() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              Sua empresa está um passo de uma multa milionária do eSocial?<br/>
-              <span className="text-[#FF6B00]">A BSeg resolve isso para você.</span>
+              Sua empresa está em dia com todas as documentações e exigências de SST?<br/>
+              <span className="text-[#FF6B00]">A BSeg simplifica a gestão em segurança do trabalho do seu negócio.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed font-medium">
-              Laudos, programas e gestão de SST conduzidos por Engenheiros especializados. Conformidade garantida, zero burocracia para o seu RH.
+              Elaboramos laudos, treinamentos, programas ambientais e realizamos a gestão documental completa da sua empresa com o respaldo de Engenheiros especializados. Proteção jurídica garantida e zero burocracia para a sua empresa.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
