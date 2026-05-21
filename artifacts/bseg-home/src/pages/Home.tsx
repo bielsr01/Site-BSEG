@@ -690,7 +690,7 @@ export default function Home() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-[#0A1628] font-bold">Necessidade principal</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} defaultValue={field.value} modal={false}>
                           <FormControl>
                             <SelectTrigger className="h-12 bg-gray-50 border-gray-200" data-testid="select-necessidade">
                               <SelectValue placeholder="Selecione uma opção" />
