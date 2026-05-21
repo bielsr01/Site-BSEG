@@ -158,7 +158,7 @@ export default function Home() {
       </header>
 
       {/* 2. HERO */}
-      <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center">
+      <section id="hero" className="relative pt-24 pb-12 md:pt-36 md:pb-20 min-h-[75vh] flex items-center">
         {/* Background Slideshow with Cross-fade */}
         <div className="absolute inset-0 z-0">
           {heroSlides.map((slide, i) => (
@@ -181,10 +181,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="inline-flex items-center gap-2 bg-[#228848] text-white px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-8">
-              Engenheiros de Segurança do Trabalho em Foz do Iguaçu
-            </div>
-            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
               Sua empresa está em dia com todas as documentações e exigências de SST?<br/>
               <span className="text-[#FF6B00]">A BSeg simplifica a gestão em segurança do trabalho do seu negócio.</span>
