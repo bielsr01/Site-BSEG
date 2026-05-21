@@ -1,10 +1,8 @@
 {
-  "buildCommand": "pnpm --filter @workspace/bseg-home run build",
+  "buildCommand": "chmod +x ./build-vercel.sh && ./build-vercel.sh",
   "outputDirectory": "artifacts/bseg-home/dist/public",
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/nrs/(.*)", "destination": "/nrs/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
