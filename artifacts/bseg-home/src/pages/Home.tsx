@@ -28,7 +28,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 import heroSlide1 from "@assets/hero-slide-1.png";
 import heroSlideNew from "@assets/Group-29_1779326233053.png";
-import heroSlideNew2 from "@assets/Group-27_1779326412708.png";
+import heroSlideNew2 from "@assets/Group-27-clean.png";
 import heroOfficePath from "@assets/hero-bseg-office.png";
 import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
