@@ -253,6 +253,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
+              <p className="text-black font-bold text-lg uppercase tracking-widest mb-3">Quem somos?</p>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-6">
                 A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
               </h2>
