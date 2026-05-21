@@ -182,7 +182,7 @@ export default function Home() {
             className="max-w-4xl"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              Sua empresa está em dia com todas as documentações e exigências de SST?<br/>
+              Sua empresa está em dia com todas as documentações e exigências em SST?<br/>
               <span className="text-[#FF6B00]">A BSeg simplifica a gestão em segurança do trabalho do seu negócio.</span>
             </h1>
             
