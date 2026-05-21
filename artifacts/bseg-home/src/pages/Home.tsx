@@ -442,7 +442,7 @@ export default function Home() {
             </motion.div>
 
             <div className="lg:pl-8">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-10">Por que +150 empresas escolheram a BSeg?</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-10">Por que mais de 500 empresas escolheram a BSeg?</h2>
               
               <div className="space-y-8 mb-12">
                 {[
