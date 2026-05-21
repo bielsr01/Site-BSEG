@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -26,10 +26,15 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-import heroBgPath from "@assets/hero-bseg-factory.png";
+import heroSlide1 from "@assets/hero-slide-1.png";
+import heroSlide2 from "@assets/hero-slide-2.png";
+import heroSlide3 from "@assets/hero-slide-3.png";
+import heroSlide4 from "@assets/hero-slide-4.png";
 import heroOfficePath from "@assets/hero-bseg-office.png";
 import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
+
+const heroSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4];
 
 const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20solicitar%20um%20diagn%C3%B3stico%20de%20SST%20para%20minha%20empresa.";
 
@@ -45,6 +50,14 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export default function Home() {
   const { toast } = useToast();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -147,15 +160,19 @@ export default function Home() {
 
       {/* 2. HERO */}
       <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex items-center">
-        {/* Background Image with Overlay */}
+        {/* Background Slideshow with Cross-fade */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroBgPath} 
-            alt="Fundo Industrial" 
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-[#0A1628]/75"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent opacity-80"></div>
+          {heroSlides.map((slide, i) => (
+            <img
+              key={i}
+              src={slide}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
+              style={{ opacity: i === currentSlide ? 1 : 0 }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-[#0A1628]/55"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] to-transparent opacity-60"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">

@@ -18,6 +18,30 @@ uri = "file://attached_assets/hero-bseg-aerial.png"
 type = "image"
 title = "hero bseg aerial industrial"
 
+[[generated]]
+id = "1LV8N8UzBHys-V5-YoRtE"
+uri = "file://attached_assets/hero-slide-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "jp2_KLDXXjRmZx3H-3xpc"
+uri = "file://attached_assets/hero-slide-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "E86PbPCpHmG-dckRFOKet"
+uri = "file://attached_assets/hero-slide-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "48EKAcPiKVGy5pRfT0VQ3"
+uri = "file://attached_assets/hero-slide-4.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "hUeh_Mvfsd150TNOYyzCn"
 uri = "file://artifacts/bseg-home/src/assets/safety-team.jpg"
