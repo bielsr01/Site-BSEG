@@ -506,7 +506,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative pb-0 lg:pb-12 overflow-hidden rounded-[2rem] min-w-0"
+              className="relative pb-0 lg:pb-12 overflow-hidden lg:overflow-visible rounded-[2rem] min-w-0"
             >
               <div className="absolute inset-0 bg-[#228848]/10 rounded-[2rem] transform -rotate-1 z-0"></div>
               <img 
