@@ -103,7 +103,7 @@ function TestimonialsCarousel() {
   );
 
   return (
-    <section className="py-16 md:py-24 bg-[#F4F7FF] rounded-b-[3rem] overflow-hidden">
+    <section className="py-10 md:py-14 bg-[#F4F7FF] rounded-b-[3rem] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
@@ -398,10 +398,10 @@ export default function Home() {
       </section>
 
       {/* 3. Sobre Nós */}
-      <section id="sobre" className="py-20 md:py-28 bg-white">
+      <section id="sobre" className="py-12 md:py-16 bg-white">
         <div className="w-full max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-8">
           {/* Top: image + text */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-10">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -441,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* 4. Nossos Serviços */}
-      <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF] rounded-t-[3rem]">
+      <section id="servicos" className="py-12 md:py-16 bg-[#F4F7FF] rounded-t-[3rem]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-4">
             <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-[#0A1628] font-bold text-base sm:text-[22px]">
@@ -500,14 +500,14 @@ export default function Home() {
       <TestimonialsCarousel />
 
       {/* 6. Por que escolher a BSeg? (Diferenciais) */}
-      <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden rounded-b-[3rem]">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="diferenciais" className="py-12 md:py-16 bg-white overflow-hidden rounded-b-[3rem]">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative pb-0 lg:pb-12 overflow-hidden rounded-[2rem]"
+              className="relative pb-0 lg:pb-12 overflow-hidden rounded-[2rem] min-w-0"
             >
               <div className="absolute inset-0 bg-[#228848]/10 rounded-[2rem] transform -rotate-1 z-0"></div>
               <img 
@@ -614,9 +614,9 @@ export default function Home() {
       </section>
 
       {/* 8. Formulário de conversão + Footer */}
-      <section id="contato" className="bg-[#0A1628] text-white pt-20 pb-10">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 mb-24">
+      <section id="contato" className="bg-[#0A1628] text-white pt-14 pb-10">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">Solicite seu Diagnóstico Gratuito</h2>
               <p className="text-base md:text-lg text-white/80 mb-8 md:mb-12">
