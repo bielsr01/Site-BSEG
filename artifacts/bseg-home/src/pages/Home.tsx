@@ -32,6 +32,15 @@ import heroSlideNew2 from "@assets/Group-27-clean.png";
 import heroOfficePath from "@assets/hero-bseg-office.png";
 import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
+import sobreGroup6 from "@assets/bseg-sobre-group6.png";
+import sobreCard1 from "@assets/bseg-sobre-1.png";
+import sobreCard2 from "@assets/bseg-sobre-2.png";
+import sobreCard3 from "@assets/bseg-sobre-3.png";
+import sobreCard4 from "@assets/bseg-sobre-4.png";
+import sobreCard5 from "@assets/bseg-sobre-5.png";
+import sobreCard6 from "@assets/bseg-sobre-6.png";
+import sobreCard7 from "@assets/bseg-sobre-7.png";
+import sobreCard8 from "@assets/bseg-sobre-8.png";
 
 const heroSlides = [heroSlide1, heroSlideNew2, heroSlideNew];
 
@@ -221,17 +230,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Barra de autoridade */}
-      <section className="py-8 bg-white border-b border-gray-100">
+      {/* 3. Sobre Nós */}
+      <section id="sobre" className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-4">
-          <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-6">
-            Empresas que confiam na BSeg
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale">
-            {["Construtora Iguassu", "Ind. Paraná", "Logística Sul", "Varejo ABC", "Agro West", "Saúde Vida"].map((brand) => (
-              <span key={brand} className="text-xl md:text-2xl font-black font-serif tracking-tighter">
-                {brand}
-              </span>
+          {/* Top: image + text */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <img
+                src={sobreGroup6}
+                alt="Engenheiros BSeg em campo"
+                className="w-full max-w-md lg:max-w-full object-contain"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-6">
+                A <span className="text-[#228848]">BSeg Segurança do Trabalho</span> é referência em soluções de segurança ocupacional, garantindo conformidade.
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Soluções especializadas para empresas que buscam segurança, saúde ocupacional e conformidade com a legislação trabalhista.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-10">
+                A <strong className="text-[#228848]">BSeg Segurança do Trabalho</strong> é referência em soluções de segurança ocupacional. Nosso compromisso é proteger a saúde dos colaboradores e garantir que sua empresa esteja sempre em conformidade com as normas regulamentadoras. Com uma equipe especializada e um atendimento humanizado, simplificamos processos para que você possa focar no crescimento do seu negócio.
+              </p>
+              <a href={WA_LINK} target="_blank" rel="noreferrer" data-testid="btn-sobre-wa">
+                <Button className="bg-[#228848] hover:bg-[#1a6d3a] text-white h-12 px-8 font-bold flex items-center gap-3 uppercase tracking-wide">
+                  <SiWhatsapp className="w-5 h-5 shrink-0" />
+                  Entre em contato no WhatsApp
+                </Button>
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Bottom: 8 service cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[sobreCard1, sobreCard2, sobreCard3, sobreCard4, sobreCard5, sobreCard6, sobreCard7, sobreCard8].map((card, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+              >
+                <img src={card} alt="" className="w-full rounded-2xl shadow-md" />
+              </motion.div>
             ))}
           </div>
         </div>
