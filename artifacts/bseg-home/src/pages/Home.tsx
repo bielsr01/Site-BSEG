@@ -272,20 +272,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Bottom: 8 service cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[sobreCard1, sobreCard2, sobreCard3, sobreCard4, sobreCard5, sobreCard6, sobreCard7, sobreCard8].map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-              >
-                <img src={card} alt="" className="w-full rounded-2xl shadow-md" />
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
