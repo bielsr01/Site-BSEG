@@ -55,6 +55,92 @@ import testimonial4 from "@assets/testimonial_group17_1.png";
 
 const heroSlides = [heroSlide1, heroSlideNew2, heroSlideNew];
 
+const testimonialImages = [testimonial1, testimonial2, testimonial3, testimonial4];
+
+function TestimonialsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const total = testimonialImages.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % total);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
+  const next = () => setCurrent((c) => (c + 1) % total);
+
+  const getVisible = () => {
+    return [0, 1, 2].map((offset) => (current + offset) % total);
+  };
+
+  return (
+    <section className="py-16 md:py-24 bg-[#F4F7FF]">
+      <div className="container mx-auto px-4">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
+        </div>
+
+        <div className="relative">
+          <div className="hidden md:flex gap-6 justify-center items-center">
+            {getVisible().map((idx, pos) => (
+              <motion.img
+                key={idx}
+                src={testimonialImages[idx]}
+                alt={`Depoimento ${idx + 1}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: pos === 1 ? 1 : 0.7, y: 0, scale: pos === 1 ? 1.03 : 1 }}
+                transition={{ duration: 0.4 }}
+                className="h-60 w-auto object-contain rounded-2xl cursor-pointer"
+                onClick={pos === 0 ? prev : pos === 2 ? next : undefined}
+              />
+            ))}
+          </div>
+
+          <div className="md:hidden flex justify-center">
+            <motion.img
+              key={current}
+              src={testimonialImages[current]}
+              alt={`Depoimento ${current + 1}`}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.35 }}
+              className="h-64 w-auto object-contain rounded-2xl"
+            />
+          </div>
+
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
+            aria-label="Anterior"
+          >
+            ‹
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0A1628] hover:bg-[#228848] hover:text-white transition-colors"
+            aria-label="Próximo"
+          >
+            ›
+          </button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-6">
+          {testimonialImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-[#228848] scale-125" : "bg-gray-300"}`}
+              aria-label={`Ir para depoimento ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20solicitar%20um%20diagn%C3%B3stico%20de%20SST%20para%20minha%20empresa.";
 
 const contactSchema = z.object({
@@ -381,24 +467,7 @@ export default function Home() {
       </section>
 
       {/* 5. Depoimentos */}
-      <section className="py-16 md:py-24 bg-[#F4F7FF] overflow-hidden">
-        <div className="container mx-auto px-4 mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">O que nossos clientes dizem</h2>
-        </div>
-
-        <div className="marquee-wrapper relative overflow-hidden">
-          <div className="animate-marquee flex gap-6 w-max items-center">
-            {[testimonial1, testimonial2, testimonial3, testimonial4, testimonial1, testimonial2, testimonial3, testimonial4].map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`Depoimento de cliente ${(i % 4) + 1}`}
-                className="h-56 md:h-64 w-auto object-contain shrink-0 rounded-2xl"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsCarousel />
 
       {/* 6. Por que escolher a BSeg? (Diferenciais) */}
       <section id="diferenciais" className="py-20 md:py-32 bg-white overflow-hidden">
