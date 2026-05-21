@@ -27,13 +27,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 import heroSlide1 from "@assets/hero-slide-1.png";
-import heroSlide3 from "@assets/hero-slide-3.png";
 import heroSlideNew from "@assets/Group-29_1779326233053.png";
+import heroSlideNew2 from "@assets/Group-27_1779326412708.png";
 import heroOfficePath from "@assets/hero-bseg-office.png";
 import heroAerialPath from "@assets/hero-bseg-aerial.png";
 import logoPath from "@assets/02 Logotipo.png";
 
-const heroSlides = [heroSlide1, heroSlide3, heroSlideNew];
+const heroSlides = [heroSlide1, heroSlideNew2, heroSlideNew];
 
 const WA_LINK = "https://api.whatsapp.com/send?phone=5545988160990&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20solicitar%20um%20diagn%C3%B3stico%20de%20SST%20para%20minha%20empresa.";
 
