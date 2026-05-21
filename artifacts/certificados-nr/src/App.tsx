@@ -34,7 +34,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import bsegLogo from "@assets/02 Logotipo.png";
-import certImage from "@assets/download_(5)_1779314587937.png";
+const certImage = "/nrs/images/cert-image.png";
 
 const queryClient = new QueryClient();
 
@@ -232,6 +232,8 @@ const Hero = () => {
               alt="Certificado de Conclusão B.SEG - Norma Regulamentadora"
               style={{ maxHeight: "calc(100svh - 160px)" }}
               className="w-auto object-contain"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
         </motion.div>
