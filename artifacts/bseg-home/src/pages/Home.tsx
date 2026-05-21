@@ -474,13 +474,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white/5 border border-white/10 p-5 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.25)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default flex flex-col items-center text-center"
+                className="bg-[#F4F7FF] border border-[#e2e8f0] p-5 rounded-2xl shadow-md hover:shadow-[0_8px_32px_rgba(34,136,72,0.20)] hover:-translate-y-1 hover:border-[#228848]/40 transition-all duration-300 cursor-default flex flex-col items-center text-center"
               >
-                <div className="w-10 h-10 bg-[#228848]/20 rounded-xl flex items-center justify-center text-[#25D366] mb-4">
+                <div className="w-10 h-10 bg-[#228848]/15 rounded-xl flex items-center justify-center text-[#228848] mb-4">
                   <srv.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
-                <p className="text-white/60 leading-relaxed text-base">{srv.desc}</p>
+                <h3 className="text-2xl font-bold text-[#0A1628] mb-2">{srv.title}</h3>
+                <p className="text-gray-500 leading-relaxed text-base">{srv.desc}</p>
               </motion.div>
             ))}
           </div>
