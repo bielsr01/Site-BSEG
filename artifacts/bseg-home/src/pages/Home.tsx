@@ -335,7 +335,7 @@ export default function Home() {
               },
               {
                 title: "Treinamentos de NRs",
-                desc: "Capacitações presenciais e in-company para NR-5, NR-6, NR-10, NR-12, NR-33, NR-35 e demais normas. Certificados válidos e reconhecidos.",
+                desc: "Capacitações presenciais e online para NR-5, NR-6, NR-10, NR-12, NR-33, NR-35 e demais normas. Certificados válidos e reconhecidos.",
                 icon: GraduationCap
               },
               {
