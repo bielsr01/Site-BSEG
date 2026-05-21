@@ -371,10 +371,10 @@ export default function Home() {
       <section id="servicos" className="py-20 md:py-32 bg-[#F4F7FF]">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-4">
-            <p className="text-sm font-semibold text-[#228848] uppercase tracking-widest flex items-center justify-center gap-2 mb-4">
-              <span className="w-8 h-px bg-[#228848] inline-block"></span>
+            <p className="uppercase tracking-widest flex items-center justify-center gap-2 mb-4 text-[#000000] font-bold text-[22px]">
+              <span className="w-8 h-px inline-block bg-[#000000]"></span>
               Nossos Serviços
-              <span className="w-8 h-px bg-[#228848] inline-block"></span>
+              <span className="w-8 h-px inline-block bg-[#000000]"></span>
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-4">Soluções completas para sua empresa</h2>
             <p className="text-lg text-gray-500">
