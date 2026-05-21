@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "@emailjs/browser";
 import { 
   Menu, 
   X, 
@@ -65,6 +66,7 @@ export default function Home() {
   const { toast } = useToast();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,12 +87,42 @@ export default function Home() {
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  function onSubmit(values: ContactFormValues) {
-    toast({
-      title: "Mensagem enviada com sucesso!",
-      description: "Um Engenheiro de Segurança entrará em contato em até 24 horas.",
-    });
-    form.reset();
+  async function onSubmit(values: ContactFormValues) {
+    setIsSending(true);
+    const necessidadeLabel: Record<string, string> = {
+      esocial: "Regularização eSocial",
+      "pgr-pcmso": "PGR / PCMSO",
+      treinamentos: "Treinamentos NRs",
+      laudos: "Laudos Técnicos",
+      "nao-sei": "Diagnóstico gratuito",
+    };
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: values.nome,
+          empresa: values.empresa,
+          telefone: values.telefone,
+          necessidade: necessidadeLabel[values.necessidade] ?? values.necessidade,
+          to_email: "bielsr01@gmail.com",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Um Engenheiro de Segurança entrará em contato em até 24 horas.",
+      });
+      form.reset();
+    } catch {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Tente novamente ou entre em contato pelo WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   }
 
   const navLinks = [
@@ -653,8 +685,8 @@ export default function Home() {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 text-lg font-bold shadow-xl mt-4" data-testid="btn-submit-contato">
-                    Enviar e aguardar contato
+                  <Button type="submit" size="lg" disabled={isSending} className="w-full bg-[#FF6B00] hover:bg-[#E66000] text-white h-14 text-lg font-bold shadow-xl mt-4 disabled:opacity-70" data-testid="btn-submit-contato">
+                    {isSending ? "Enviando..." : "Enviar e aguardar contato"}
                   </Button>
                 </form>
               </Form>
