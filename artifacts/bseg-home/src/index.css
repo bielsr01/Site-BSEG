@@ -157,7 +157,10 @@
   --ring: 25 100% 50%;
 }
 
-html {
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
   scroll-behavior: smooth;
 }
 
