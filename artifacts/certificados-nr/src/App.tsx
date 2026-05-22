@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -98,13 +97,8 @@ const Header = () => {
       </div>
 
       {/* Mobile drawer — expands in the normal document flow */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+      {mobileOpen && (
+          <div
             className="overflow-hidden border-t border-white/10 md:hidden"
           >
             <div className="flex flex-col px-6 py-4">
@@ -128,9 +122,8 @@ const Header = () => {
                 <MessageCircle className="w-5 h-5" /> Falar no WhatsApp
               </a>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </header>
   );
 };
@@ -155,11 +148,7 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 py-8 relative z-10 grid lg:grid-cols-2 gap-10 items-center h-full">
         {/* Left: copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="space-y-4 lg:space-y-6"
+        <div className="space-y-4 lg:space-y-6"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-xs sm:text-sm font-semibold text-[#FF6B00]">
             <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -185,18 +174,16 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <div className="relative inline-flex">
               <span className="absolute -inset-1 rounded-xl border-2 border-[#25D366]/60 animate-ping pointer-events-none" />
-              <motion.a
+              <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
                 data-testid="hero-whatsapp-cta"
                 className="inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-black text-lg shadow-[0_0_30px_rgba(37,211,102,0.35)]"
               >
                 <MessageCircle className="w-6 h-6" />
                 Emitir Certificado em 24h!
-              </motion.a>
+              </a>
             </div>
           </div>
 
@@ -214,14 +201,10 @@ const Hero = () => {
               Válido em todo território nacional
             </span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Right: certificate card preview */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="relative hidden lg:flex items-center justify-center h-full py-4"
+        <div className="relative hidden lg:flex items-center justify-center h-full py-4"
         >
           {/* Glow behind card */}
           <div className="absolute inset-0 bg-[#FF6B00]/20 blur-[80px] rounded-3xl" />
@@ -236,7 +219,7 @@ const Hero = () => {
               fetchPriority="high"
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -275,12 +258,8 @@ const Trust = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className={`relative p-8 rounded-2xl border-2 transition-shadow ${
                 item.highlight
                   ? "border-[#FF6B00] bg-white shadow-[0_4px_40px_rgba(255,107,0,0.12)]"
@@ -305,16 +284,12 @@ const Trust = () => {
                 {item.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Price highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 flex justify-center"
+        <div className="mt-14 flex justify-center"
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-[#0A1628] text-white px-10 py-6 rounded-2xl shadow-xl">
             <div className="text-center sm:text-left">
@@ -340,7 +315,7 @@ const Trust = () => {
               Solicitar agora
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -401,14 +376,9 @@ const NrGrid = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           {nrs.map((nr, index) => (
-            <motion.div
+            <div
               key={nr.num}
               data-testid={`nr-card-${nr.num}`}
-              initial={{ opacity: 0, scale: 0.92 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.06 }}
-              whileHover={{ y: -4 }}
               className="group p-3 sm:p-5 lg:p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B00] hover:shadow-[0_8px_30px_rgba(255,107,0,0.12)] transition-all duration-300 text-center bg-white flex flex-col items-center"
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 mx-auto bg-gray-50 group-hover:bg-[#FF6B00] rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0A1628] group-hover:text-white transition-all duration-300 mb-3 shadow-sm shrink-0">
@@ -420,19 +390,14 @@ const NrGrid = () => {
               <p className="text-gray-700 font-semibold group-hover:text-[#0A1628] transition-colors text-[12px] sm:text-[14px] lg:text-[16px] leading-snug">
                 {nr.title}
               </p>
-            </motion.div>
+            </div>
           ))}
 
           {/* CTA card */}
-          <motion.a
+          <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: nrs.length * 0.06 }}
-            whileHover={{ y: -4 }}
             className="p-6 rounded-2xl border-2 border-dashed border-[#FF6B00]/40 hover:border-[#FF6B00] bg-[#FF6B00]/3 hover:bg-[#FF6B00]/8 flex flex-col items-center justify-center text-center transition-all duration-300 cursor-pointer"
           >
             <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF6B00] mb-2 sm:mb-3" />
@@ -442,7 +407,7 @@ const NrGrid = () => {
             <span className="text-[#FF6B00] font-bold underline text-[12px] sm:text-[15px] lg:text-[18px]">
               Consulte no WhatsApp
             </span>
-          </motion.a>
+          </a>
         </div>
       </div>
     </section>
@@ -492,12 +457,8 @@ const HowItWorks = () => {
           <div className="hidden md:block absolute top-[52px] left-[calc(16.66%+32px)] right-[calc(16.66%+32px)] h-0.5 bg-gradient-to-r from-[#FF6B00]/40 via-[#FF6B00] to-[#FF6B00]/40" />
 
           {steps.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.18 }}
               className="relative z-10 flex flex-col items-center text-center gap-6"
             >
               {/* Step circle */}
@@ -518,24 +479,22 @@ const HowItWorks = () => {
                 </h3>
                 <p className="text-gray-300 leading-relaxed">{item.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA below steps */}
         <div className="flex justify-center mt-16">
-          <motion.a
+          <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
             data-testid="how-it-works-cta"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-4 rounded-xl font-black text-lg shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:bg-[#20bd5a] transition-colors"
           >
             <MessageCircle className="w-6 h-6" />
             Emitir certificado em 24h!
-          </motion.a>
+          </a>
         </div>
       </div>
     </section>
@@ -547,11 +506,7 @@ const Urgency = () => {
   return (
     <section className="py-24 bg-gradient-to-br from-gray-100 to-orange-50">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-14 shadow-2xl text-center"
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-14 shadow-2xl text-center"
         >
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-100 text-red-600 mb-6">
             <AlertTriangle className="w-10 h-10" />
@@ -618,7 +573,7 @@ const Urgency = () => {
             Chamar no WhatsApp Agora
           </a>
           <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-5">Atendimento imediato</p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

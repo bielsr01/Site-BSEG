@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -68,32 +67,26 @@ const testimonials = [
 
 function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
   const [timerKey, setTimerKey] = useState(0);
   const total = testimonials.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setDirection(1);
       setCurrent((c) => (c + 1) % total);
     }, 4000);
     return () => clearInterval(timer);
   }, [total, timerKey]);
 
   const prev = () => {
-    setDirection(-1);
     setCurrent((c) => (c - 1 + total) % total);
     setTimerKey((k) => k + 1);
   };
   const next = () => {
-    setDirection(1);
     setCurrent((c) => (c + 1) % total);
     setTimerKey((k) => k + 1);
   };
 
   const visible = [0, 1, 2].map((offset) => (current + offset) % total);
-
-  const slideTransition = { type: "tween" as const, duration: 0.4, ease: "easeInOut" as const };
 
   const CardContent = ({ idx }: { idx: number }) => (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col gap-3 h-full">
@@ -114,36 +107,18 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="relative px-8 sm:px-12 overflow-hidden">
-          {/* Desktop: 3 cards, slide horizontal — altura fixa para não ter layout shift */}
+          {/* Desktop: 3 cards */}
           <div className="hidden md:block h-[168px] overflow-hidden relative rounded-2xl">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div
-                key={current}
-                initial={{ x: direction > 0 ? "100%" : "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: direction > 0 ? "-100%" : "100%" }}
-                transition={slideTransition}
-                className="absolute inset-0 grid grid-cols-3 gap-4"
-              >
-                {visible.map((idx) => <CardContent key={idx} idx={idx} />)}
-              </motion.div>
-            </AnimatePresence>
+            <div className="absolute inset-0 grid grid-cols-3 gap-4">
+              {visible.map((idx) => <CardContent key={idx} idx={idx} />)}
+            </div>
           </div>
 
-          {/* Mobile: 1 card — altura generosa para caber qualquer texto */}
+          {/* Mobile: 1 card */}
           <div className="md:hidden h-[216px] overflow-hidden relative rounded-2xl">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div
-                key={current}
-                initial={{ x: direction > 0 ? "100%" : "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: direction > 0 ? "-100%" : "100%" }}
-                transition={slideTransition}
-                className="absolute inset-0"
-              >
-                <CardContent idx={current} />
-              </motion.div>
-            </AnimatePresence>
+            <div className="absolute inset-0">
+              <CardContent idx={current} />
+            </div>
           </div>
 
           <button
@@ -166,7 +141,7 @@ function TestimonialsCarousel() {
           {testimonials.map((_, i) => (
             <button
               key={i}
-              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); setTimerKey((k) => k + 1); }}
+              onClick={() => { setCurrent(i); setTimerKey((k) => k + 1); }}
               className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-[#228848] scale-125" : "bg-gray-300"}`}
               aria-label={`Ir para depoimento ${i + 1}`}
             />
@@ -314,10 +289,7 @@ export default function Home() {
 
           {/* Mobile Nav */}
           {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute top-20 left-0 right-0 bg-[#0A1628] border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl lg:hidden"
+            <div className="absolute top-20 left-0 right-0 bg-[#0A1628] border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl lg:hidden"
             >
               <nav className="flex flex-col gap-4 text-base font-semibold tracking-wider text-white/90 text-center">
                 {navLinks.map((link) => (
@@ -336,7 +308,7 @@ export default function Home() {
                   Falar com Engenheiro
                 </Button>
               </a>
-            </motion.div>
+            </div>
           )}
         </div>
       </header>
@@ -361,11 +333,7 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+          <div className="max-w-4xl"
           >
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-8 md:mb-10">
               Simplifique a gestão de SST da sua empresa.<br/>
@@ -399,7 +367,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -408,24 +376,15 @@ export default function Home() {
         <div className="w-full max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-8">
           {/* Top: image + text */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-10">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="flex justify-center"
-            >
+            <div className="flex justify-center">
               <img
                 src={sobreGroup6}
                 alt="Engenheiros BSeg em campo"
                 className="w-full max-w-md lg:max-w-full object-contain rounded-2xl"
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="min-w-0 w-full overflow-hidden"
+            <div className="min-w-0 w-full overflow-hidden"
             >
               <p className="text-black font-bold text-sm sm:text-lg uppercase tracking-widest mb-3">Quem somos?</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-6 break-words">
@@ -440,7 +399,7 @@ export default function Home() {
                   Entre em contato no WhatsApp
                 </Button>
               </a>
-            </motion.div>
+            </div>
           </div>
 
         </div>
@@ -470,12 +429,8 @@ export default function Home() {
               { title: "eSocial SST", desc: "Gestão completa dos eventos de SST no eSocial, garantindo envio correto e dentro dos prazos.", icon: Monitor },
               { title: "Exames Ocupacionais", desc: "Admissionais, periódicos, demissionais e complementares com rede credenciada.", icon: Stethoscope }
             ].map((srv, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
                 className="p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300 cursor-default flex flex-col items-center text-center"
                 style={{
                   background: "linear-gradient(135deg, #0A1628 0%, #228848 100%)",
@@ -487,7 +442,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
                 <p className="text-white/75 leading-relaxed text-base">{srv.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -509,11 +464,7 @@ export default function Home() {
       <section id="diferenciais" className="py-12 md:py-16 bg-white overflow-hidden rounded-b-[3rem]">
         <div className="w-full max-w-screen-xl mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative pb-0 lg:pb-12 overflow-hidden lg:overflow-visible rounded-[2rem] min-w-0"
+            <div className="relative pb-0 lg:pb-12 overflow-hidden lg:overflow-visible rounded-[2rem] min-w-0"
             >
               <div className="absolute inset-0 bg-[#228848]/10 rounded-[2rem] transform -rotate-1 z-0"></div>
               <img 
@@ -525,7 +476,7 @@ export default function Home() {
                 <p className="font-bold text-base lg:text-lg mb-1 text-[#25D366]">Atendimento Nacional</p>
                 <p className="text-sm text-white/80">Atendemos empresas em todo o Brasil com suporte remoto e presencial.</p>
               </div>
-            </motion.div>
+            </div>
 
             <div className="lg:pl-8 min-w-0">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0A1628] mb-6 md:mb-10">Por que mais de 500 empresas escolheram a BSeg?</h2>
@@ -549,14 +500,7 @@ export default function Home() {
                     desc: "Cada empresa recebe um diagnóstico exclusivo, não soluções genéricas."
                   }
                 ].map((item, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex gap-4"
-                  >
+                  <div key={i} className="flex gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#228848]/10 flex items-center justify-center shrink-0 mt-1 text-[#228848]">
                       <CheckCircle2 className="w-5 h-5" />
                     </div>
@@ -564,7 +508,7 @@ export default function Home() {
                       <h4 className="text-xl font-bold text-[#0A1628] mb-2">{item.title}</h4>
                       <p className="text-gray-600 font-medium leading-relaxed">{item.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
