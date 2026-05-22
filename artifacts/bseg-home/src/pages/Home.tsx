@@ -447,9 +447,6 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
                   <p className="text-white/75 leading-relaxed text-base">{srv.desc}</p>
-                  {isNR && (
-                    <span className="mt-3 text-xs font-semibold text-[#25D366] uppercase tracking-widest">Ver certificados →</span>
-                  )}
                 </Tag>
               );
             })}
