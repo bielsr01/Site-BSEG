@@ -428,22 +428,31 @@ export default function Home() {
               { title: "Treinamentos NR", desc: "Capacitação profissional em todas as Normas Regulamentadoras com certificação.", icon: BookOpen },
               { title: "eSocial SST", desc: "Gestão completa dos eventos de SST no eSocial, garantindo envio correto e dentro dos prazos.", icon: Monitor },
               { title: "Exames Ocupacionais", desc: "Admissionais, periódicos, demissionais e complementares com rede credenciada.", icon: Stethoscope }
-            ].map((srv, i) => (
-              <div
-                key={i}
-                className="p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300 cursor-default flex flex-col items-center text-center"
-                style={{
-                  background: "linear-gradient(135deg, #0A1628 0%, #228848 100%)",
-                  boxShadow: "0 4px 24px rgba(34,136,72,0.35), 0 1px 4px rgba(10,22,40,0.4)"
-                }}
-              >
-                <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center text-white mb-4">
-                  <srv.icon className="w-5 h-5" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
-                <p className="text-white/75 leading-relaxed text-base">{srv.desc}</p>
-              </div>
-            ))}
+            ].map((srv, i) => {
+              const isNR = srv.title === "Treinamentos NR";
+              const Tag = isNR ? "a" : "div";
+              const extraProps = isNR ? { href: "/nrs", target: "_blank", rel: "noreferrer" } : {};
+              return (
+                <Tag
+                  key={i}
+                  {...extraProps}
+                  className={`p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center ${isNR ? "cursor-pointer" : "cursor-default"}`}
+                  style={{
+                    background: "linear-gradient(135deg, #0A1628 0%, #228848 100%)",
+                    boxShadow: "0 4px 24px rgba(34,136,72,0.35), 0 1px 4px rgba(10,22,40,0.4)"
+                  }}
+                >
+                  <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center text-white mb-4">
+                    <srv.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{srv.title}</h3>
+                  <p className="text-white/75 leading-relaxed text-base">{srv.desc}</p>
+                  {isNR && (
+                    <span className="mt-3 text-xs font-semibold text-[#25D366] uppercase tracking-widest">Ver certificados →</span>
+                  )}
+                </Tag>
+              );
+            })}
           </div>
 
           <div className="text-center px-4">
