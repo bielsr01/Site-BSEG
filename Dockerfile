@@ -6,7 +6,7 @@ RUN npm install -g pnpm@10
 WORKDIR /app
 COPY . .
 
-RUN NODE_OPTIONS=--max-old-space-size=4096 pnpm install --frozen-lockfile
+RUN NODE_OPTIONS=--max-old-space-size=4096 pnpm install --no-frozen-lockfile
 RUN sh build-vercel.sh
 
 # ── Stage 2: serve ─────────────────────────────────────────────────────────
