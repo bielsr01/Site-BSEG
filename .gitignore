@@ -2,6 +2,8 @@
 
 # compiled output
 dist
+# Exception: pre-built static files for Docker/EasyPanel deployment
+!artifacts/bseg-home/dist/
 tmp
 out-tsc
 *.tsbuildinfo
