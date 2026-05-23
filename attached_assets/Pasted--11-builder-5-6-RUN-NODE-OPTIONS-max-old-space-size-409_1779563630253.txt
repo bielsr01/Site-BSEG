@@ -1,0 +1,110 @@
+#11 [builder 5/6] RUN NODE_OPTIONS=--max-old-space-size=4096 pnpm install --no-frozen-lockfile
+#11 0.703 Scope: all 10 workspace projects
+#11 0.933 Lockfile is up to date, resolution step is skipped
+#11 1.018 Progress: resolved 1, reused 0, downloaded 0, added 0
+#11 1.121 Packages: +482
+#11 1.121 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#11 1.420 
+#11 1.420    ╭─────────────────────────────────────────╮
+#11 1.420    │                                         │
+#11 1.420    │   Update available! 10.33.4 → 11.2.2.   │
+#11 1.420    │   Changelog: https://pnpm.io/v/11.2.2   │
+#11 1.420    │    To update, run: pnpm add -g pnpm     │
+#11 1.420    │                                         │
+#11 1.420    ╰─────────────────────────────────────────╯
+#11 1.420 
+#11 2.020 Progress: resolved 482, reused 0, downloaded 123, added 65
+#11 3.028 Progress: resolved 482, reused 0, downloaded 280, added 209
+#11 4.030 Progress: resolved 482, reused 0, downloaded 297, added 214
+#11 5.031 Progress: resolved 482, reused 0, downloaded 446, added 289
+#11 6.032 Progress: resolved 482, reused 0, downloaded 481, added 481
+#11 6.253 Progress: resolved 482, reused 0, downloaded 482, added 482, done
+#11 6.639 .../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+#11 6.725 .../esbuild@0.27.3/node_modules/esbuild postinstall: [esbuild] Failed to find package "@esbuild/linux-arm64" on the file system
+#11 6.725 .../esbuild@0.27.3/node_modules/esbuild postinstall: This can happen if you use the "--no-optional" flag. The "optionalDependencies"
+#11 6.725 .../esbuild@0.27.3/node_modules/esbuild postinstall: package.json feature is used by esbuild to install the correct binary executable
+#11 6.725 .../esbuild@0.27.3/node_modules/esbuild postinstall: for your current platform. This install script will now attempt to work around
+#11 6.726 .../esbuild@0.27.3/node_modules/esbuild postinstall: this. If that fails, you need to remove the "--no-optional" flag to use esbuild.
+#11 6.727 .../esbuild@0.27.3/node_modules/esbuild postinstall: [esbuild] Trying to install package "@esbuild/linux-arm64" using npm
+#11 7.958 .../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+#11 8.300 
+#11 8.300 devDependencies:
+#11 8.300 + prettier 3.8.3
+#11 8.300 + typescript 5.9.3
+#11 8.300 
+#11 8.403 . preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+#11 8.414 . preinstall: Done
+#11 8.617 Done in 8.5s using pnpm v10.33.4
+#11 DONE 11.4s
+
+#12 [builder 6/6] RUN sh build-vercel.sh
+#12 1.058 
+#12 1.058 > @workspace/certificados-nr@0.0.0 build /app/artifacts/certificados-nr
+#12 1.058 > vite build --config vite.config.ts
+#12 1.058 
+#12 1.283 /app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js:115
+#12 1.283 		throw new Error(
+#12 1.283 		      ^
+#12 1.283 
+#12 1.283 Error: Cannot find module @rollup/rollup-linux-arm64-musl. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+#12 1.283     at requireWithFriendlyError (/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js:115:9)
+#12 1.283     at Object.<anonymous> (/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js:124:76)
+#12 1.283     ... 3 lines matching cause stack trace ...
+#12 1.283     at Module._load (node:internal/modules/cjs/loader:1091:12)
+#12 1.283     at cjsLoader (node:internal/modules/esm/translators:298:15)
+#12 1.283     at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+#12 1.283     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+#12 1.283     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+#12 1.283   [cause]: Error: Cannot find module '@rollup/rollup-linux-arm64-musl'
+#12 1.283   Require stack:
+#12 1.283   - /app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js
+#12 1.283       at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+#12 1.283       at Module._load (node:internal/modules/cjs/loader:1038:27)
+#12 1.283       at Module.require (node:internal/modules/cjs/loader:1289:19)
+#12 1.283       at require (node:internal/modules/helpers:182:18)
+#12 1.283       at requireWithFriendlyError (/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js:97:10)
+#12 1.283       at Object.<anonymous> (/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js:124:76)
+#12 1.283       at Module._compile (node:internal/modules/cjs/loader:1521:14)
+#12 1.283       at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+#12 1.283       at Module.load (node:internal/modules/cjs/loader:1266:32)
+#12 1.283       at Module._load (node:internal/modules/cjs/loader:1091:12) {
+#12 1.283     code: 'MODULE_NOT_FOUND',
+#12 1.283     requireStack: [
+#12 1.283       '/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js'
+#12 1.283     ]
+#12 1.283   }
+#12 1.283 }
+#12 1.283 
+#12 1.283 Node.js v20.20.2
+#12 1.337 /app/artifacts/certificados-nr:
+#12 1.337  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/certificados-nr@0.0.0 build: `vite build --config vite.config.ts`
+#12 1.337 Exit status 1
+#12 ERROR: process "/bin/sh -c sh build-vercel.sh" did not complete successfully: exit code: 1
+------
+ > [builder 6/6] RUN sh build-vercel.sh:
+1.283     requireStack: [
+1.283       '/app/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/native.js'
+1.283     ]
+1.283   }
+1.283 }
+1.283 
+1.283 Node.js v20.20.2
+1.337 /app/artifacts/certificados-nr:
+1.337  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/certificados-nr@0.0.0 build: `vite build --config vite.config.ts`
+1.337 Exit status 1
+------
+Dockerfile:10
+--------------------
+   8 |     
+   9 |     RUN NODE_OPTIONS=--max-old-space-size=4096 pnpm install --no-frozen-lockfile
+  10 | >>> RUN sh build-vercel.sh
+  11 |     
+  12 |     # ── Stage 2: serve ─────────────────────────────────────────────────────────
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c sh build-vercel.sh" did not complete successfully: exit code: 1
+##########################################
+### Error
+### Sat, 23 May 2026 19:13:13 GMT
+##########################################
+
+Command failed with exit code 1: docker buildx build --network host -f /etc/easypanel/projects/coxinha-teste/coxinha/code/Dockerfile -t easypanel/coxinha-teste/coxinha --label 'keep=true' --build-arg 'GIT_SHA=f8e82dcdbaab064a7609d70340df707742cc30aa' /etc/easypanel/projects/coxinha-teste/coxinha/code/
